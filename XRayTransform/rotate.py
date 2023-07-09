@@ -50,11 +50,45 @@ def naive_image_rotate(image, degrees, option='same'):
                 rot_img[i,j,:] = image[x,y,:]
     return rot_img 
 
+def radon_transform(image, thetas, n):
+    '''
+    Computes Radon transform of image
+
+    inputs: image: input image (dtype: numpy-ndarray)
+    thetas: array containing angles of rotation
+
+    '''
+    #n = image.shape[0]
+    rt_img = np.uint8(np.zeros((image.shape[0],np.size(thetas),image.shape[2])))
+
+    print("shape:",rt_img.shape)
+
+    for th in range(np.size(thetas)):
+        #print(th)
+        print("theta:",thetas[th])
+        print("th:",th)
+        rot_img = naive_image_rotate(image,thetas[th]+90,'same')
+        print("rot_img:",rot_img.shape)
+
+        for i in range(n):
+
+            Sum = (2/n)*sum(rot_img[i,:,:])
+            rt_img[i,th,:] = Sum
+
+    return rt_img
+
+
+
 if __name__=='__main__':
-    filename = "mickey.png"
-    image = cv2.imread(filename)
-    rotated_image = naive_image_rotate(image,30,'full')
+    filename = 'mickey.png'
+    image = cv2.imread("./mickey.png")
+    n = image.shape[0]
+    thetas = np.linspace(0.01,180,256)
+    print(thetas)
+    rt = radon_transform(image,thetas,n)
+    #print(image[:,32,:])
+    #rotated_image = naive_image_rotate(image,30,'full')
     cv2.imshow("original image", image)
-    cv2.imshow("rotated image",rotated_image)
+    cv2.imshow("sinogram",rt)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
