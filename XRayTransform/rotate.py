@@ -56,35 +56,42 @@ def radon_transform(image, thetas, n):
 
     inputs: image: input image (dtype: numpy-ndarray)
     thetas: array containing angles of rotation
-
+    n: size of image
     '''
     #n = image.shape[0]
     rt_img = np.uint8(np.zeros((image.shape[0],np.size(thetas),image.shape[2])))
 
-    print("shape:",rt_img.shape)
-
     for th in range(np.size(thetas)):
-        #print(th)
-        print("theta:",thetas[th])
-        print("th:",th)
         rot_img = naive_image_rotate(image,thetas[th]+90,'same')
-        print("rot_img:",rot_img.shape)
 
         for i in range(n):
+            Sum0 = (2/n)*sum(rot_img[i,:,0])
+            Sum1 = (2/n)*sum(rot_img[i,:,1])
+            Sum2 = (2/n)*sum(rot_img[i,:,2])
 
-            Sum = (2/n)*sum(rot_img[i,:,:])
-            rt_img[i,th,:] = Sum
+            rt_img[i,th,0] = Sum0
+            rt_img[i,th,1] = Sum1
+            rt_img[i,th,2] = Sum2
 
     return rt_img
 
-
+def backproject(rt, thetas, n)
+    '''
+    Computes backprojection using sinogram of original image
+    inputs: rt: input sinogram
+    thetas: array containing angles of rotation
+    n: size of image
+    '''
 
 if __name__=='__main__':
-    filename = 'mickey.png'
-    image = cv2.imread("./mickey.png")
+    #filename = 'mickey.png'
+    rot_start = 0.01
+    rot_end = 360
+    steps = 256
+    image = cv2.imread(r'/home/swuupii/ImageReconstruction/XRayTransform/mickey.png')
     n = image.shape[0]
-    thetas = np.linspace(0.01,180,256)
-    print(thetas)
+    thetas = np.linspace(rot_start,rot_end,steps)
+    
     rt = radon_transform(image,thetas,n)
     #print(image[:,32,:])
     #rotated_image = naive_image_rotate(image,30,'full')
