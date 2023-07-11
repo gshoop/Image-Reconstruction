@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import math
+import matplotlib.pyplot as plt
 
 def naive_image_rotate(image, degrees, option='same'):
     '''
@@ -27,7 +28,7 @@ def naive_image_rotate(image, degrees, option='same'):
                            round(abs(image.shape[1]*math.cos(rads)))
         width_rot_img = round(abs(image.shape[1]*math.cos(rads))) + \
                            round(abs(image.shape[0]*math.sin(rads)))
-        rot_img = np.uint8(np.zeros((height_rot_img,width_rot_img,image.shape[2])))
+        rot_img = np.uint8(np.zeros((height_rot_img,width_rot_img)))
         # Finding the center point of rotated image.
         midx,midy = (width_rot_img//2, height_rot_img//2)
     else:
@@ -47,7 +48,7 @@ def naive_image_rotate(image, degrees, option='same'):
                 y=round(y)+cy
 
             if (x>=0 and y>=0 and x<image.shape[0] and  y<image.shape[1]):
-                rot_img[i,j,:] = image[x,y,:]
+                rot_img[i,j] = image[x,y]
     return rot_img 
 
 def radon_transform(image, thetas, n):
@@ -59,23 +60,23 @@ def radon_transform(image, thetas, n):
     n: size of image
     '''
     #n = image.shape[0]
-    rt_img = np.uint8(np.zeros((image.shape[0],np.size(thetas),image.shape[2])))
+    rt_img = np.uint8(np.zeros((image.shape[0],np.size(thetas))))
 
     for th in range(np.size(thetas)):
         rot_img = naive_image_rotate(image,thetas[th]+90,'same')
 
         for i in range(n):
-            Sum0 = (2/n)*sum(rot_img[i,:,0])
-            Sum1 = (2/n)*sum(rot_img[i,:,1])
-            Sum2 = (2/n)*sum(rot_img[i,:,2])
+            Sum0 = (2/n)*sum(rot_img[i,:])
+            #Sum1 = (2/n)*sum(rot_img[i,:,1])
+            #Sum2 = (2/n)*sum(rot_img[i,:,2])
 
-            rt_img[i,th,0] = Sum0
-            rt_img[i,th,1] = Sum1
-            rt_img[i,th,2] = Sum2
+            rt_img[i,th] = Sum0
+            #rt_img[i,th,1] = Sum1
+            #rt_img[i,th,2] = Sum2
 
     return rt_img
 
-def backproject(rt, thetas, n)
+def backproject(rt, thetas, n):
     '''
     Computes backprojection using sinogram of original image
     inputs: rt: input sinogram
@@ -83,19 +84,54 @@ def backproject(rt, thetas, n)
     n: size of image
     '''
 
+    img_recon = np.uint8(np.zeros((n,n)))
+    temp = np.uint8(np.zeros((n,n)))
+    for th in range(np.size(thetas)):
+        #img_recon = naive_image_rotate(img_recon,thetas[1]-thetas[0],'same')
+
+        for i in range(n):
+            temp[i,:] = rt[:,th]
+            #temp[i,:,1] = rt[:,th,1]
+            #temp[i,:,2] = rt[:,th,2]
+
+        temp = naive_image_rotate(temp,thetas[th],'same')
+        img_recon += temp
+
+    return img_recon
+
+    
+    
+
 if __name__=='__main__':
     #filename = 'mickey.png'
     rot_start = 0.01
     rot_end = 360
     steps = 256
-    image = cv2.imread(r'/home/swuupii/ImageReconstruction/XRayTransform/mickey.png')
+    image = cv2.imread(r'/home/swuupii/ImageReconstruction/XRayTransform/mickey.png',0)
     n = image.shape[0]
     thetas = np.linspace(rot_start,rot_end,steps)
     
     rt = radon_transform(image,thetas,n)
+    
+    print(rt.shape)
+    img = backproject(rt,thetas,n)
+    
     #print(image[:,32,:])
     #rotated_image = naive_image_rotate(image,30,'full')
-    cv2.imshow("original image", image)
-    cv2.imshow("sinogram",rt)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.imshow("original image", image)
+    #cv2.imshow("sinogram",rt)
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
+
+    plt.figure(1)
+    plt.imshow(image,cmap='gray')
+
+    plt.figure(2)
+    plt.imshow(rt,cmap='gray')
+    x_ticks = np.linspace(0, np.pi, 3)
+    x_labels = ['0', 'π/2', 'π']
+    plt.xticks(np.linspace(0, 256, len(x_ticks)), x_labels)
+
+    plt.figure(3)
+    plt.imshow(img,cmap='gray')
+    plt.show()
