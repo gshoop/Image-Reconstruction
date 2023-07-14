@@ -106,6 +106,7 @@ if __name__=='__main__':
     n = image.shape[0]
     thetas = np.linspace(rot_start,rot_end,steps)   # Thetas in degrees since naive_image_rotation converts to rad
     
+    # Point source example
     new_img = np.zeros((n,n))
     new_img[20,9] = 255
 
