@@ -78,11 +78,9 @@ def backproject(rt, thetas, n):
             thetas: array containing angles of rotation
             n: size of image
     '''
-
     img_recon = np.uint8(np.zeros((n,n)))
     temp = np.uint8(np.zeros((n,n)))
     
-
     for th in range(np.size(thetas)):
         for i in range(n):
             temp[i,:] = rt[:,th]
@@ -91,7 +89,6 @@ def backproject(rt, thetas, n):
 
         img_recon += temp                                   # Normalization needed
         # Need to take core of when pixel values overflow over 255
-
     return img_recon
 
     
