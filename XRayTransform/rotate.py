@@ -66,7 +66,7 @@ def radon_transform(image, thetas, n):
         rot_img = naive_image_rotate(image,thetas[th]+90,'same')
 
         for i in range(n):
-            Sum0 = (2/n)*sum(rot_img[i,:])
+            Sum0 = (2/np.size(thetas))*sum(rot_img[i,:])
             rt_img[n-1-i,th] = Sum0
 
     return rt_img
@@ -101,7 +101,7 @@ if __name__=='__main__':
 
     rot_start = 0.01
     rot_end = 180
-    steps = 100
+    steps = 300
     image = cv2.imread(r'/home/swuupii/ImageReconstruction/XRayTransform/mickey.png',0)
     n = image.shape[0]
     thetas = np.linspace(rot_start,rot_end,steps)   # Thetas in degrees since naive_image_rotation converts to rad
@@ -120,8 +120,9 @@ if __name__=='__main__':
     plt.figure(2)
     plt.imshow(rt,cmap='gray')
     x_ticks = np.linspace(0, np.pi, 3)
-    x_labels = ['0', 'π', '2π']
+    x_labels = ['0', 'π/2', 'π']
     plt.xticks(np.linspace(0, len(thetas), len(x_ticks)), x_labels)
+    plt.ylabel('t')
 
     plt.figure(3)
     plt.imshow(img,cmap='gray')
