@@ -33,7 +33,7 @@
 #----------------------------
 # Phantom Geometry
 #----------------------------
-/control/execute ./macro/Phantom.mac
+#/control/execute ./macro/Phantom.mac
 
 #----------------------------
 # Physics

@@ -1,0 +1,9 @@
+# -------------------------------------------------------------
+# Source Geometry
+# -------------------------------------------------------------
+/gate/source/addSource				    point
+/gate/source/point/gps/pos/type		    Volume
+/gate/source/point/gps/pos/shape		Sphere
+/gate/source/point/gps/pos/radius	    0.1 mm
+/gate/source/point/gps/ang/type			iso
+
