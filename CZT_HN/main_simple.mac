@@ -55,12 +55,12 @@
 #----------------------------
 # Digitizer
 #----------------------------
-/control/execute ./macro/Digitizer.mac
+#/control/execute ./macro/Digitizer.mac
 
 #----------------------------
 # Source
 #----------------------------
-/control/execute ./macro/Source.mac
+/control/execute ./macro/SingleGammaSource.mac
 
 #----------------------------
 # Data output
@@ -79,9 +79,9 @@
 # ROOT Output format
 /gate/output/root/enable
 /gate/output/root/setFileName             ./output/partial_
-/gate/output/root/setRootHitFlag          0
+/gate/output/root/setRootHitFlag          1
 /gate/output/root/setRootSinglesFlag      0
-/gate/output/root/setRootCoincidencesFlag 1
+/gate/output/root/setRootCoincidencesFlag 0
 
 #----------------------------
 # Randomize 
