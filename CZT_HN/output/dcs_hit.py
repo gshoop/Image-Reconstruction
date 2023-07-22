@@ -61,17 +61,60 @@ def validate_panel_distance(input_file):
         input_file: String containing the path of the input file. ".dat"
     '''
 
+    expected_distance = 1.0e2
     with open(input_file,'r') as infile:
         for line in infile:
             columns = line.split()
             x_pos = float(columns[13])
-            if abs(x_pos) < 1.0e2:
+            if abs(x_pos) < expected_distance:
                 print("event ID:")
                 print(int(columns[1]))
                 print("x position:")
                 print(x_pos)
                 return False
-        return True
+    return True
+    
+def validate_panel_width(input_file):
+    '''
+    Validates panel width and FOV in the y-direction by examining the position of hits in a GATE generated hit file.
+
+    Parameters:
+        input_file: String containing the path of the input file. ".dat"
+    '''
+
+    expected_width = 7.5e1
+    with open(input_file,'r') as infile:
+        for line in infile:
+            columns = line.split()
+            y_pos =  float(columns[14])
+            if abs(y_pos) > expected_width:
+                print("event ID:")
+                print(int(columns[1]))
+                print("y position:")
+                print(y_pos)
+                return False
+    return True
+        
+def validate_panel_height(input_file):
+    '''
+    Validates panel height and FOV in the z-direction by examining the position of hits in a GATE generated hit file.
+
+    Parameters:
+        input_file: String containing the path of the input file. ".dat"
+    '''
+
+    expected_height = 1.0e2
+    with open(input_file,'r') as infile:
+        for line in infile:
+            columns = line.split()
+            z_pos =  float(columns[15])
+            if abs(z_pos) > expected_height:
+                print("event ID:")
+                print(int(columns[1]))
+                print("z position:")
+                print(z_pos)
+                return False
+    return True
 
 def validate_dcs(input_file):
     '''
@@ -80,7 +123,7 @@ def validate_dcs(input_file):
     Parameters:
         input_file: String containing the path of the input file. ".dat"
     '''
-    
+
     tolerance = 1e-2
     target_energy = 0.909
     with open(input_file, 'r') as infile:
@@ -105,17 +148,29 @@ def validate_dcs(input_file):
     return True
 
 if __name__ == '__main__':
+    debug = False
     input_file = 'partial_Hits.dat'
     slim_hit = 'slim_hit.dat'
     dcs_hit = 'dcs_hit.dat'
+
+
     exclude_rayl_interactions(input_file,slim_hit)
     filter_dcs(slim_hit,dcs_hit)
 
-    if validate_dcs(dcs_hit):
-        print("Data valid")
-    else:
-        print("error: dcs data invalid")
-    if validate_panel_distance(dcs_hit):
-        print("Panel Distance correct")
-    else:
-        print("error: Panel distance not as expected")
+    if debug:
+        if validate_dcs(dcs_hit):
+            print("Data valid")
+        else:
+            print("error: dcs data invalid")
+        if validate_panel_distance(dcs_hit):
+            print("Panel Distance correct")
+        else:
+            print("error: Panel distance not as expected")
+        if validate_panel_width(dcs_hit):
+            print("Panel Width correct")
+        else:
+            print("error: Panel width not as expected")
+        if validate_panel_height(dcs_hit):
+            print("Panel Height correct")
+        else:
+            print("error: Panel height not as expected")
