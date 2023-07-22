@@ -83,7 +83,6 @@ def validate_dcs(input_file):
 
     return True
 
-
 if __name__ == '__main__':
     input_file = 'partial_Hits.dat'
     slim_hit = 'slim_hit.dat'
