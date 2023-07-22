@@ -78,10 +78,10 @@ import os
 # Greyson Hit File
 # Raw_Hit_Path = '/Users/kimia/Desktop/Prompt Gamma/Hit Processing/input/input_Greyson/Zr89Hit.dat'
 # Greyson last version Hit File
-Raw_Hit_Path = '/Users/kimia/Desktop/Prompt Gamma/Hit Processing/input/input_Greyson-new/Zr89Hit_simple.dat'
+Raw_Hit_Path = '/home/swuupie/Image-Reconstruction/CZT_HN/output/partial_Hits.dat'
 
 # The path to the desired outputs
-output_path = '/Users/kimia/Desktop/Prompt Gamma/Hit Processing/output'
+output_path = '/home/swuupie/Image-Reconstruction/CZT_HN/output'
 
 
 # In[3]:
@@ -645,107 +645,107 @@ def PvsA(CP_Count_File):
 
 # In[10]:
 
+if __name__=='__main__':
+    # Decide what to do with the Raw Hit File
+    answer_raw_hit_path           = "n"
+    answer_output_path            = "n"
+    answer_Slim_Hit  = "y"
+    answer_CP_Count  = "n"
+    answer_CP_Table  = "n"
+    answer_Coin_Pair = "n"
+    answer_DCS       = "n"
+    answer_DCS_Pos   = "n"
+    answer_PvsA      = "n"
 
-# Decide what to do with the Raw Hit File
-answer_raw_hit_path           = "n"
-answer_output_path            = "n"
-answer_Slim_Hit  = "y"
-answer_CP_Count  = "y"
-answer_CP_Table  = "y"
-answer_Coin_Pair = "y"
-answer_DCS       = "y"
-answer_DCS_Pos   = "y"
-answer_PvsA      = "y"
+    # The Raw Hit File path
+    print("The Raw Hit File is located at: \n")
+    print(Raw_Hit_Path)
+    print("if you want to change the Raw Hit File path type Y, otherwise type N \n")
+    input(answer_raw_hit_path)
+    if answer_raw_hit_path == "Y":
+        print("Insert the Raw Hit File path")
+        input(Raw_Hit_Path)
+    elif answer_raw_hit_path == "y":
+        print("Insert the Raw Hit File path")
+        input(Raw_Hit_Path)
 
-# # The Raw Hit File path
-# print("The Raw Hit File is located at: \n")
-# print(Raw_Hit_Path)
-# print("if you want to change the Raw Hit File path type Y, otherwise type N \n")
-# input(answer_raw_hit_path)
-# if answer_raw_hit_path == "Y":
-#     print("Insert the Raw Hit File path")
-#     input(Raw_Hit_Path)
-# elif answer_raw_hit_path == "y":
-#     print("Insert the Raw Hit File path")
-#     input(Raw_Hit_Path)
-
-# # The output path
-# print("The output path is located at: \n")
-# print(output_path)
-# print("if you want to change the output path type Y, otherwise type N \n")
-# input(answer_output_path)
-# if answer_output_path == "Y":
-#     print("Insert the output path")
-#     input(output_path)
-# elif answer_output_path == "y":
-#     print("Insert the output path")
-#     input(output_path)
+    # The output path
+    print("The output path is located at: \n")
+    print(output_path)
+    print("if you want to change the output path type Y, otherwise type N \n")
+    input(answer_output_path)
+    if answer_output_path == "Y":
+        print("Insert the output path")
+        input(output_path)
+    elif answer_output_path == "y":
+        print("Insert the output path")
+        input(output_path)
     
-# # Generating the Slim Hit File
-# print("\n")
-# answer_Slim_Hit = input("If you want the Slim Hit type (Y), otherwise type (N) : \n")
-# answer_CP_Count = input("If you want the Compton PHotoElectric (CP) Counts type (Y), otherwise type (N) : \n")
-# answer_CP_Table = input("If you want the Compron PhotoElectric (CP) Table type (Y), otherwise type (N) : \n")
-# answer_Coin_Pair = input("If you want the Coincidence Pairs type (Y), otherwise type (N) : \n")
-# answer_DCS = input("If you want the Double Compton Scatter (DCS) events type (Y), otherwise type (N) : \n")
-# answer_DCS_Pos = input("If you want the Double Compton Scatter (DCS) Pairs type (Y), otherwise type (N) : \n")
-# answer_PvsA = input("If you want the Prompt vs Aniihilation table type (Y), otherwise type (N) : \n")
-# print("\n")
+    # # Generating the Slim Hit File
+    # print("\n")
+    # answer_Slim_Hit = input("If you want the Slim Hit type (Y), otherwise type (N) : \n")
+    # answer_CP_Count = input("If you want the Compton PHotoElectric (CP) Counts type (Y), otherwise type (N) : \n")
+    # answer_CP_Table = input("If you want the Compron PhotoElectric (CP) Table type (Y), otherwise type (N) : \n")
+    # answer_Coin_Pair = input("If you want the Coincidence Pairs type (Y), otherwise type (N) : \n")
+    # answer_DCS = input("If you want the Double Compton Scatter (DCS) events type (Y), otherwise type (N) : \n")
+    # answer_DCS_Pos = input("If you want the Double Compton Scatter (DCS) Pairs type (Y), otherwise type (N) : \n")
+    # answer_PvsA = input("If you want the Prompt vs Aniihilation table type (Y), otherwise type (N) : \n")
+    # print("\n")
 
-print("------------------")
-print("\n")
-if answer_Slim_Hit=="Y" or answer_CP_Count=="Y" or answer_Coin_Pair=="Y" or answer_DCS_Pos=="Y":
-    Slim_Hit_File = Slim_Hit(Raw_Hit_Path)
-elif answer_Slim_Hit=="y" or answer_CP_Count=="y" or answer_Coin_Pair=="y" or answer_DCS_Pos=="y":
-    Slim_Hit_File = Slim_Hit(Raw_Hit_Path)
+    print("------------------")
+    print("\n")
+    if answer_Slim_Hit=="Y" or answer_CP_Count=="Y" or answer_Coin_Pair=="Y" or answer_DCS_Pos=="Y":
+        Slim_Hit_File = Slim_Hit(Raw_Hit_Path)
+    elif answer_Slim_Hit=="y" or answer_CP_Count=="y" or answer_Coin_Pair=="y" or answer_DCS_Pos=="y":
+        Slim_Hit_File = Slim_Hit(Raw_Hit_Path)
     
-print("\n")
-print("------------------")
-print("\n")
-if answer_CP_Count=="Y" or answer_CP_Table=="Y" or answer_Coin_Pair=="Y" or answer_DCS=="Y":
-    CP_Count_File = CP_Count(Slim_Hit_File)
-elif answer_CP_Count=="y" or answer_CP_Table=="y" or answer_Coin_Pair=="y" or answer_DCS=="y":
-    CP_Count_File = CP_Count(Slim_Hit_File)
+    print("\n")
+    print("------------------")
+    print("\n")
+    if answer_CP_Count=="Y" or answer_CP_Table=="Y" or answer_Coin_Pair=="Y" or answer_DCS=="Y":
+        CP_Count_File = CP_Count(Slim_Hit_File)
+    elif answer_CP_Count=="y" or answer_CP_Table=="y" or answer_Coin_Pair=="y" or answer_DCS=="y":
+        CP_Count_File = CP_Count(Slim_Hit_File)
 
-print("\n")
-print("------------------")
-print("\n")
-if answer_CP_Table=="Y":
-    CP_Table_File = CP_Table(CP_Count_File)
-elif answer_CP_Table=="y":
-    CP_Table_File = CP_Table(CP_Count_File)
+    print("\n")
+    print("------------------")
+    print("\n")
+    if answer_CP_Table=="Y":
+        CP_Table_File = CP_Table(CP_Count_File)
+    elif answer_CP_Table=="y":
+        CP_Table_File = CP_Table(CP_Count_File)
 
-print("\n")
-print("------------------")
-print("\n")
-if answer_Coin_Pair=="Y":
-    Coin_Pair_File = Coin_Pair(Slim_Hit_File, CP_Count_File)
-elif answer_Coin_Pair=="y":
-    Coin_Pair_File = Coin_Pair(Slim_Hit_File, CP_Count_File)
+    print("\n")
+    print("------------------")
+    print("\n")
+    if answer_Coin_Pair=="Y":
+        Coin_Pair_File = Coin_Pair(Slim_Hit_File, CP_Count_File)
+    elif answer_Coin_Pair=="y":
+        Coin_Pair_File = Coin_Pair(Slim_Hit_File, CP_Count_File)
+
+    print("\n")
+    print("------------------")
+    print("\n")
+    if answer_DCS=="Y" or answer_DCS_Pos=="Y":
+        DCS_File = DCS(CP_Count_File)
+    elif answer_DCS=="y" or answer_DCS_Pos=="y":
+        DCS_File = DCS(CP_Count_File)
+
+    print("\n")
+    print("------------------")
+    print("\n")
+    if answer_DCS_Pos=="Y":
+        DCS_Pos_File = DCS_Pos(Slim_Hit_File, DCS_File)
+    elif answer_DCS_Pos=="y":
+        DCS_Pos_File = DCS_Pos(Slim_Hit_File, DCS_File)
     
-print("\n")
-print("------------------")
-print("\n")
-if answer_DCS=="Y" or answer_DCS_Pos=="Y":
-    DCS_File = DCS(CP_Count_File)
-elif answer_DCS=="y" or answer_DCS_Pos=="y":
-    DCS_File = DCS(CP_Count_File)
-
-print("\n")
-print("------------------")
-print("\n")
-if answer_DCS_Pos=="Y":
-    DCS_Pos_File = DCS_Pos(Slim_Hit_File, DCS_File)
-elif answer_DCS_Pos=="y":
-    DCS_Pos_File = DCS_Pos(Slim_Hit_File, DCS_File)
-    
-print("\n")
-print("------------------")
-print("\n")
-if answer_PvsA=="Y":
-    PvsA_File = PvsA(CP_Count_File)
-elif answer_PvsA=="y":
-    PvsA_File = PvsA(CP_Count_File)
+    print("\n")
+    print("------------------")
+    print("\n")
+    if answer_PvsA=="Y":
+        PvsA_File = PvsA(CP_Count_File)
+    elif answer_PvsA=="y":
+        PvsA_File = PvsA(CP_Count_File)
 
 
 # In[ ]:
