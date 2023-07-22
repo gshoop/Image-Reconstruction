@@ -14,9 +14,9 @@
 /gate/world/daughters/name				cylindricalPET
 /gate/world/daughters/insert				cylinder
 /gate/cylindricalPET/placement/setTranslation		0.0 0.0 0.0 mm
-/gate/cylindricalPET/geometry/setRmin			60. mm
-/gate/cylindricalPET/geometry/setRmax			300. mm
-/gate/cylindricalPET/geometry/setHeight			300. mm
+/gate/cylindricalPET/geometry/setRmin			95. mm
+/gate/cylindricalPET/geometry/setRmax			180. mm
+/gate/cylindricalPET/geometry/setHeight			200. mm
 /gate/cylindricalPET/setMaterial			Vacuum
 /gate/cylindricalPET/vis/setColor			cyan
 /gate/cylindricalPET/vis/forceWireframe
@@ -26,7 +26,7 @@
 # =====================================================================
 /gate/cylindricalPET/daughters/name 			panel
 /gate/cylindricalPET/daughters/insert			box
-/gate/panel/placement/setTranslation			65. 0.0 0.0 mm
+/gate/panel/placement/setTranslation			120. 0.0 0.0 mm
 /gate/panel/geometry/setXLength				40. mm
 /gate/panel/geometry/setYLength				150. mm
 /gate/panel/geometry/setZLength				200. mm
@@ -39,9 +39,9 @@
 # =====================================================================
 /gate/panel/daughters/name 				pixel
 /gate/panel/daughters/insert				box
-/gate/pixel/geometry/setXLength				4.0 cm
-/gate/pixel/geometry/setYLength				0.5 cm
-/gate/pixel/geometry/setZLength				4.0 cm
+/gate/pixel/geometry/setXLength				39.99 mm
+/gate/pixel/geometry/setYLength				4.99 mm
+/gate/pixel/geometry/setZLength				39.99 mm
 /gate/pixel/setMaterial					CZT
 /gate/pixel/vis/setColor				green
 /gate/pixel/vis/forceSolid

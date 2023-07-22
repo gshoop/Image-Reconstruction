@@ -53,6 +53,26 @@ def filter_dcs(input_file, output_file):
                 previous_process = process
                 current_row = line
 
+def validate_panel_distance(input_file):
+    '''
+    Validate panel distance and FOV in the x-direction by examining the position of hits in a GATE generated hit file.
+
+    Parameters:
+        input_file: String containing the path of the input file. ".dat"
+    '''
+
+    with open(input_file,'r') as infile:
+        for line in infile:
+            columns = line.split()
+            x_pos = float(columns[13])
+            if abs(x_pos) < 1.0e2:
+                print("event ID:")
+                print(int(columns[1]))
+                print("x position:")
+                print(x_pos)
+                return False
+        return True
+
 def validate_dcs(input_file):
     '''
     Validates the filter_dcs function to confirm whether the dcs events sum up to the gamma energy level.
@@ -60,6 +80,7 @@ def validate_dcs(input_file):
     Parameters:
         input_file: String containing the path of the input file. ".dat"
     '''
+    
     tolerance = 1e-2
     target_energy = 0.909
     with open(input_file, 'r') as infile:
@@ -94,3 +115,7 @@ if __name__ == '__main__':
         print("Data valid")
     else:
         print("error: dcs data invalid")
+    if validate_panel_distance(dcs_hit):
+        print("Panel Distance correct")
+    else:
+        print("error: Panel distance not as expected")

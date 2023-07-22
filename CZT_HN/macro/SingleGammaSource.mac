@@ -9,4 +9,4 @@
 
 /gate/source/point/gps/particle gamma
 /gate/source/point/gps/energy 909 keV
-/gate/source/point/setActivity 40. kBq
+/gate/source/point/setActivity 100. kBq
