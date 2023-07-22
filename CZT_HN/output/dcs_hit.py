@@ -1,4 +1,11 @@
 def exclude_rayl_interactions(input_file, output_file):
+    '''
+    Outputs a ".dat" file that excludes all Rayleigh events. Future considerations should include 'eIoni' and 'msc' events.
+    
+    Parameters:
+        input_file: String containing the path of the input file. ".dat"
+        output_file: String containing the path of the output file. ".dat"
+    '''
     with open(input_file, 'r') as infile:
         with open(output_file, 'w') as outfile:
             for line in infile:
@@ -7,6 +14,13 @@ def exclude_rayl_interactions(input_file, output_file):
                     outfile.write(line)
 
 def filter_dcs(input_file, output_file):
+    '''
+    Filters a ".dat" hit file and outputs only double compton scattering events.
+
+    Paramters:
+        input_file: String containing the path of the input file. ".dat"
+        output_file: String containing the path of the output file. ".dat"
+    '''
     with open(input_file, 'r') as infile:
         with open(output_file, 'w') as outfile:
             previous_event_id = -1
@@ -40,7 +54,14 @@ def filter_dcs(input_file, output_file):
                 current_row = line
 
 def validate_dcs(input_file):
+    '''
+    Validates the filter_dcs function to confirm whether the dcs events sum up to the gamma energy level.
+
+    Parameters:
+        input_file: String containing the path of the input file. ".dat"
+    '''
     tolerance = 1e-2
+    target_energy = 0.909
     with open(input_file, 'r') as infile:
         event_ids = set()
         sums = {}
@@ -55,7 +76,7 @@ def validate_dcs(input_file):
                 event_ids.add(event_id)
 
     for event_id, sum in sums.items():
-        if sum > 0.909 + tolerance and sum < 0.909 + tolerance:
+        if sum > target_energy + tolerance and sum < target_energy + tolerance:
             print(event_id)
             print(sum)
             return False
@@ -67,7 +88,7 @@ if __name__ == '__main__':
     input_file = 'partial_Hits.dat'
     slim_hit = 'slim_hit.dat'
     dcs_hit = 'dcs_hit.dat'
-    exclude_rayl_interactions(input_file, slim_hit)
+    exclude_rayl_interactions(input_file,slim_hit)
     filter_dcs(slim_hit,dcs_hit)
 
     if validate_dcs(dcs_hit):
