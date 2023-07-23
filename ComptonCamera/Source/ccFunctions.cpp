@@ -33,3 +33,21 @@ void DefinePostionMatrix( vector<vector<vector<vector<float> > > > &pos_matrix, 
     }
     cout << "Position Matrix complete..." << "\n" << endl;
 }
+
+void ConstructCones( float* conelist_1D, string input){
+    cout << "Reading input data and constructing cones list..." << "\n" << endl;
+
+    ifstream file ( input );
+    vector<float> linledata;
+    string line;
+    float E1, E2;
+    float theta, utheta, KN;
+    unsigned errors = 0;
+
+    // Count rows of input file for total number of compton cones
+    unsigned count = 0;
+    while (getline(file, line)) {
+        count++;
+    }
+    cout << "There are a total of " << count << " compton cones.\n" << endl;
+}
