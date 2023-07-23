@@ -1,4 +1,4 @@
-#include "ccFunctions.h"
+#include "../Headers/ccFunctions.h"
 
 void DefinePostionMatrix( vector<vector<vector<vector<float> > > > &pos_matrix, float* f, unsigned x_vox, unsigned y_vox, unsigned z_vox,
                           float x_start, float y_start, float z_start, float delx, float dely, float delz ){
