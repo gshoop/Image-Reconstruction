@@ -147,6 +147,23 @@ def validate_dcs(input_file):
 
     return True
 
+def construct_coincidence_list(input_file):
+    '''
+    Takes dcs GATE generated hit file and generates an output of the coincidences. The structure of the output
+    file is as follows:
+
+    column 0 -- Energy of first scattered photon
+    column 1 -- x position of hit
+    column 2 -- y position of hit
+    column 3 -- z position of hit
+    column 4 -- Energy of the absorbed photon
+    column 5 -- x position of hit
+    column 6 -- y position of hit
+    column 7 -- z position of hit
+    '''
+
+
+
 if __name__ == '__main__':
     debug = False
     input_file = 'partial_Hits.dat'
