@@ -15,14 +15,21 @@ void DefinePostionMatrix( vector<vector<vector<vector<float> > > > &pos_matrix, 
 
                 f[ i + j * x_vox + k * x_vox * y_vox] = 1.0;
 
-                // Print out the position.
-                for (int l = 0; l < 3; l++) {
-                    cout << pos_matrix[i][j][k][l] << " ";
-                }
+                // *********************************************
+                // FOR DEBUGING PURPOSES
+                // *********************************************
+                // Print out the position of center of each voxel.
+                // for (int l = 0; l < 3; l++) {
+                //     if (l == 0) {
+                //         cout << "{ ";
+                //     }
+                //     cout << pos_matrix[i][j][k][l] << " ";
+                //     if (l == 2) {
+                //         cout << "}, ";
+                //     }
+                // }
             }
         }
     }
-
     cout << "Position Matrix complete..." << "\n" << endl;
-
 }

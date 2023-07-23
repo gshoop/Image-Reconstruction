@@ -23,10 +23,12 @@ int main(int argc, char const *argv[])
 
     cout << "Voxel dimensions: " << delx << "," << dely << "," << delz << "\n" << endl;
 
+    // Instantiating the voxel position matrix and source distribution vector
     vector<vector<vector<vector<float> > > > position_matrix(numVox_x, vector<vector<vector<float> > >(numVox_y, vector<vector<float> >(numVox_z , {0,0,0} ) ) );
     float* f = new float [numVox_x*numVox_y*numVox_z]{};
 
+    // Fills position_matrix with coordinates representing the center of the voxels in the FOV
     DefinePostionMatrix(position_matrix, f, numVox_x, numVox_y, numVox_z, x_begin, y_begin, z_begin, delx, dely, delz);
-    
+
     return 0;
 }
