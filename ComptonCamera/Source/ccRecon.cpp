@@ -7,9 +7,11 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
+    string input_path = "/home/swuupie/Image-Reconstruction/CZT_HN/output/dcs.dat";
     // Need to define the FOV (or source space) and voxelize
     float x_begin, x_end, y_begin, y_end, z_begin, z_end;
     unsigned numVox_x, numVox_y, numVox_z;
+    long unsigned cone_count;
 
     x_begin = -100.0; x_end = 100.0;
     y_begin = -75.0; y_end = 75.0;
@@ -29,6 +31,7 @@ int main(int argc, char const *argv[])
 
     // Fills position_matrix with coordinates representing the center of the voxels in the FOV
     DefinePostionMatrix(position_matrix, f, numVox_x, numVox_y, numVox_z, x_begin, y_begin, z_begin, delx, dely, delz);
+    cone_count = CountCones(input_path);
 
     return 0;
 }

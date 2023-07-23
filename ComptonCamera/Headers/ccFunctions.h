@@ -11,3 +11,5 @@ void DefinePostionMatrix( vector<vector<vector<vector<float> > > > &pos_matrix, 
                           float x_start, float y_start, float z_start, float delx, float dely, float delz );
 
 void ConstructCones( float* conelist_1D, string input);
+
+long unsigned CountCones(string input);
