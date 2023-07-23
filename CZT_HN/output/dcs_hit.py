@@ -147,7 +147,7 @@ def validate_dcs(input_file):
 
     return True
 
-def construct_coincidence_list(input_file):
+def construct_coincidence_list(input_file, output_file):
     '''
     Takes dcs GATE generated hit file and generates an output of the coincidences. The structure of the output
     file is as follows:
@@ -160,8 +160,25 @@ def construct_coincidence_list(input_file):
     column 5 -- x position of hit
     column 6 -- y position of hit
     column 7 -- z position of hit
+
+    Parameters:
+        input_file: String containing the path of the input file. ".dat"
+        output_file: String containing the path of the output file. ".dat"  
     '''
 
+    with open(input_file, 'r') as infile:
+        with open(output_file, 'w') as outfile:
+            previous_event_id = -1
+            previous_process = None
+            for line in infile:
+                columns = line.split()
+                event_id = int(columns[1])
+                process = columns[22]
+                if event_id == previous_event_id and previous_process == 'compt' and process == 'phot':
+                    outfile.write(f"{columns[11]} {columns[13]} {columns[14]} {columns[15]} {previous_columns[11]} {previous_columns[13]} {previous_columns[14]} {previous_columns[15]}\n")
+                previous_event_id = event_id
+                previous_process = process
+                previous_columns = columns
 
 
 if __name__ == '__main__':
@@ -169,10 +186,11 @@ if __name__ == '__main__':
     input_file = 'partial_Hits.dat'
     slim_hit = 'slim_hit.dat'
     dcs_hit = 'dcs_hit.dat'
-
+    dcs_list = 'dcs.dat'
 
     exclude_rayl_interactions(input_file,slim_hit)
     filter_dcs(slim_hit,dcs_hit)
+    construct_coincidence_list(dcs_hit,dcs_list)
 
     if debug:
         if validate_dcs(dcs_hit):
