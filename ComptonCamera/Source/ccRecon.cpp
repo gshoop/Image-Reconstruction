@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <math.h>
+#include "../Headers/ccFunctions.h"
 
 using namespace std;
 
@@ -22,5 +23,10 @@ int main(int argc, char const *argv[])
 
     cout << "Voxel dimensions: " << delx << "," << dely << "," << delz << "\n" << endl;
 
+    vector<vector<vector<vector<float> > > > position_matrix(numVox_x, vector<vector<vector<float> > >(numVox_y, vector<vector<float> >(numVox_z , {0,0,0} ) ) );
+    float* f = new float [numVox_x*numVox_y*numVox_z]{};
+
+    DefinePostionMatrix(position_matrix, f, numVox_x, numVox_y, numVox_z, x_begin, y_begin, z_begin, delx, dely, delz);
+    
     return 0;
 }
