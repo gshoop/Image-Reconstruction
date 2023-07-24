@@ -58,7 +58,7 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
         E2 = linedata[4];
 
         // Need to compute scattering angle from E1, E2, uncertainty, and klein nishna
-        
+
     }
 
 }
@@ -73,4 +73,15 @@ long unsigned CountCones(string input){
     }
     cout << "There are a total of " << count << " compton cones.\n" << endl;
     return count;
+}
+
+float PolarScatteringAngle(float E1, float E2){
+    float MCsq = 0.5109989461;
+    float value = 1.0 + MCsq * (1.0/(E1 + E2) - 1.0/(E2));
+
+    if ( fabs(value) < 1) {
+        return acos(value);
+    }
+
+    return 0;
 }
