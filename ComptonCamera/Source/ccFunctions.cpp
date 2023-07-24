@@ -68,6 +68,16 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
             KN = 0;
         }
 
+        vector<float> axis = UnitVector({linedata[5], linedata[6], linedata[7]}, {linedata[1], linedata[2], linedata[3]});
+
+        cout << "Unit Vector: {";
+        for (unsigned i = 0; i < axis.size(); i++) {
+            if (i < axis.size()-1) {
+                cout << axis[i] << ", ";
+            } else {
+                cout << axis[i] << "}" << endl;
+            }
+        }
 
         linedata.clear();
     }
@@ -89,9 +99,15 @@ vector<float> UnitVector(vector<float> start, vector<float> end){
     float normsq = 0;
     vector<float> vec(d);
 
+    cout << "Vector: {";
     for (unsigned i = 0; i < d; i++) {
         vec[i] = end[i] - start[i];
-        normsq = vec[i] * vec[i];
+        normsq += vec[i] * vec[i];
+        if (i < d-1) {
+            cout << vec[i] << ", ";
+        } else {
+            cout << vec[i] << "} ";
+        }
     }
     return ScalarVec( 1.0/sqrt(normsq), vec);
 }
