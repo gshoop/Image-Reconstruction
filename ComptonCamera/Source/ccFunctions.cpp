@@ -129,7 +129,7 @@ long unsigned CountCones(string input){
 float PolarScatteringAngle(float E1, float E2){
     float MCsq = 0.5109989461;
     //float value = 1.0 + MCsq * (1.0/(E1 + E2) - 1.0/(E2));
-    float value = 1 - (E1/E2 - 1)/(E1/MCsq);
+    float value = 1.0 - (E1/E2 - 1.0)/(E1/MCsq);                    // Unsure if correct implementation of compton scattering formula
     if ( fabs(value) < 1) {
         return acos(value);
     }
