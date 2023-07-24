@@ -44,12 +44,23 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
     float theta, utheta, KN;
     unsigned errors = 0;
 
-    // // Count rows of input file for total number of compton cones
-    // unsigned count = 0;
-    // while (getline(file, line)) {
-    //     count++;
-    // }
-    // cout << "There are a total of " << count << " compton cones.\n" << endl;
+    for (unsigned i = 0; i < num_cones; i++) {
+
+        getline (file, line, '\n');
+        stringstream sep(line);
+        string cell;
+
+        while (getline (sep, cell, ' ')) {
+            linedata.push_back( atof(cell.c_str()) );
+        }
+
+        E1 = linedata[0];
+        E2 = linedata[4];
+
+        // Need to compute scattering angle from E1, E2, uncertainty, and klein nishna
+        
+    }
+
 }
 
 long unsigned CountCones(string input){
