@@ -68,6 +68,7 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
             KN = 0;
         }
 
+        // Computing unit vector for cone axis of data. Need to validate DCSc data, some coincidences are scattering to opposite panels.
         vector<float> axis = UnitVector({linedata[5], linedata[6], linedata[7]}, {linedata[1], linedata[2], linedata[3]});
 
         cout << "Unit Vector: {";
