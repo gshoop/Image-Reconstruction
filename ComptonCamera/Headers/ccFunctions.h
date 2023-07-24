@@ -14,8 +14,10 @@ void DefinePostionMatrix( vector<vector<vector<vector<float> > > > &pos_matrix, 
 
 void ConstructCones( float* conelist_1D, string input, long unsigned num_cones);
 
+vector<float> ScalarVec(float c, vector<float> x);
+
+vector<float> UnitVector(vector<float> start, vector<float> end);
+
 long unsigned CountCones(string input);
 
 float PolarScatteringAngle(float E1, float E2);
-
-vector<float> UnitVector(vector<float> start, vector<float> end);

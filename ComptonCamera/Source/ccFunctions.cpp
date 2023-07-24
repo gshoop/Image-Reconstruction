@@ -74,8 +74,26 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
 
 }
 
+vector<float> ScalarVec(float c, vector<float> x){
+    unsigned len = x.size();
+    vector<float> z(len);
+
+    for (unsigned i = 0; i < len; i++) {
+        z[i] = x[i]*c;
+    }
+    return z;
+}
+
 vector<float> UnitVector(vector<float> start, vector<float> end){
-    
+    unsigned d = start.size();
+    float normsq = 0;
+    vector<float> vec(d);
+
+    for (unsigned i = 0; i < d; i++) {
+        vec[i] = end[i] - start[i];
+        normsq = vec[i] * vec[i];
+    }
+    return ScalarVec( 1.0/sqrt(normsq), vec);
 }
 
 long unsigned CountCones(string input){
