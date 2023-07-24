@@ -33,5 +33,9 @@ int main(int argc, char const *argv[])
     DefinePostionMatrix(position_matrix, f, numVox_x, numVox_y, numVox_z, x_begin, y_begin, z_begin, delx, dely, delz);
     cone_count = CountCones(input_path);
 
+    float* conelist_1D = new float[cone_count * 9]{};
+
+    ConstructCones(conelist_1D, input_path, cone_count);
+
     return 0;
 }

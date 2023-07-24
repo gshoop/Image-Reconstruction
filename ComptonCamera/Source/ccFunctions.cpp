@@ -58,9 +58,24 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
         E2 = linedata[4];
 
         // Need to compute scattering angle from E1, E2, uncertainty, and klein nishna
+        theta = PolarScatteringAngle(E1,E2);
 
+
+        //cout << i << ": Theta value: " << theta << endl;
+
+        if ( theta == 0 ){
+            errors++;
+            KN = 0;
+        }
+
+
+        linedata.clear();
     }
 
+}
+
+vector<float> UnitVector(vector<float> start, vector<float> end){
+    
 }
 
 long unsigned CountCones(string input){
