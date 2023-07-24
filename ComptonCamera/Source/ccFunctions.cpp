@@ -54,14 +54,15 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
             linedata.push_back( atof(cell.c_str()) );
         }
 
-        E1 = linedata[0];
-        E2 = linedata[4];
+        //E1 = linedata[0];
+        E1 = 0.909;
+        E2 = linedata[0];
 
         // Need to compute scattering angle from E1, E2, uncertainty, and klein nishna
         theta = PolarScatteringAngle(E1,E2);
 
 
-        //cout << i << ": Theta value: " << theta << endl;
+        cout << i << ": Theta value: " << theta << endl;
 
         if ( theta == 0 ){
             errors++;
@@ -127,8 +128,8 @@ long unsigned CountCones(string input){
 
 float PolarScatteringAngle(float E1, float E2){
     float MCsq = 0.5109989461;
-    float value = 1.0 + MCsq * (1.0/(E1 + E2) - 1.0/(E2));
-
+    //float value = 1.0 + MCsq * (1.0/(E1 + E2) - 1.0/(E2));
+    float value = 1 - (E1/E2 - 1)/(E1/MCsq);
     if ( fabs(value) < 1) {
         return acos(value);
     }
