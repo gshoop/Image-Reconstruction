@@ -175,7 +175,7 @@ def construct_coincidence_list(input_file, output_file):
                 event_id = int(columns[1])
                 process = columns[22]
                 if event_id == previous_event_id and previous_process == 'compt' and process == 'phot':
-                    outfile.write(f"{columns[11]} {columns[13]} {columns[14]} {columns[15]} {previous_columns[11]} {previous_columns[13]} {previous_columns[14]} {previous_columns[15]}\n")
+                    outfile.write(f"{previous_columns[11]} {previous_columns[13]} {previous_columns[14]} {previous_columns[15]} {columns[11]} {columns[13]} {columns[14]} {columns[15]}\n")
                 previous_event_id = event_id
                 previous_process = process
                 previous_columns = columns
