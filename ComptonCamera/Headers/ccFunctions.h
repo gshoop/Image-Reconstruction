@@ -25,3 +25,6 @@ float PolarScatteringAngle(float E1, float E2);
 float UncertaintyDoubleScatter(float E1, float E2, float UE);
 
 float KleinNishina(float E1, float E2);
+
+void Find_Intersecting(float *conelist_1D_d, unsigned char *voxel_cone_interaction_d, unsigned x_vox, unsigned y_vox, unsigned z_vox, long unsigned num_cones,
+                        float delx, float dely, float delz, float x_start, float y_start, float z_start, unsigned INTSTEP);

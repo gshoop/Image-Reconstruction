@@ -160,3 +160,28 @@ float UncertaintyDoubleScatter(float E1, float E2, float UE){
 float KleinNishina(float E1, float E2){
   return ( 1.0 - E1/(E1+E2) + (E1+E2)/E2 );
 }
+
+void Find_Intersecting(float *conelist_1D_d, unsigned char *voxel_cone_interaction_d, unsigned x_vox, unsigned y_vox, unsigned z_vox, long unsigned num_cones,
+                        float delx, float dely, float delz, float x_start, float y_start, float z_start, unsigned INTSTEP){
+    
+    for (unsigned l = 0; l < num_cones; l++) {
+
+        float amp_max = 0;
+        float theta = conelist_1D_d[6 + l * 9];
+        float sigma = conelist_1D_d[7 + l * 9];
+        float kn =    conelist_1D_d[8 + l * 9];
+
+        for (unsigned i = 0; i < x_vox; i++) {
+            for (unsigned j = 0; j < y_vox; j++) {
+                for (unsigned k = 0; k < z_vox; k++) {
+                    float center_vox[3] = { x_start + delx * (float)(i + 0.5), y_start + dely * (float)(j + 0.5), z_start + delz * (float)(k + 0.5) };
+                    float line_between[3]{};
+
+                    
+                }
+            }
+        }
+
+    }
+
+}
