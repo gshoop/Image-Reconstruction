@@ -60,7 +60,8 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
 
         // Need to compute scattering angle from E1, E2, uncertainty, and klein nishna
         theta = PolarScatteringAngle(E1,E2);
-
+        utheta = UncertaintyDoubleScatter(E1,E2,0.1);
+        KN = KleinNishina(E1,E2);
 
         cout << i << ": Theta value: " << theta << endl;
 
@@ -92,12 +93,12 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
         conelist_1D[5 + i * 9] = axis[2];
 
         conelist_1D[6 + i * 9] = theta;
-
-
+        conelist_1D[7 + i * 9] = utheta;
+        conelist_1D[8 + i * 9] = KN;
 
         linedata.clear();
     }
-
+    cout << "Finished Constructing Conelist.\n";
 }
 
 vector<float> ScalarVec(float c, vector<float> x){
@@ -149,4 +150,13 @@ float PolarScatteringAngle(float E1, float E2){
     }
 
     return 0;
+}
+
+float UncertaintyDoubleScatter(float E1, float E2, float UE){
+    float MCsq = 0.5109989461;
+    return sqrt( fabs( ( (pow(E1,4) + 4 * pow(E1,3) * E2 + 4 * pow(E1,2) * pow(E2,2) + pow(E2,2)) * MCsq * pow(UE,2)) / ( E1 * pow(E2,2) * pow(E1+E2,2) * ( 2 * E2 * (E1+E2) - E1 * MCsq ) ) ) );
+}
+
+float KleinNishina(float E1, float E2){
+  return ( 1.0 - E1/(E1+E2) + (E1+E2)/E2 );
 }

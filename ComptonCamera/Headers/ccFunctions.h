@@ -21,3 +21,7 @@ vector<float> UnitVector(vector<float> start, vector<float> end);
 long unsigned CountCones(string input);
 
 float PolarScatteringAngle(float E1, float E2);
+
+float UncertaintyDoubleScatter(float E1, float E2, float UE);
+
+float KleinNishina(float E1, float E2);
