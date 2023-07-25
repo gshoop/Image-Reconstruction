@@ -81,6 +81,20 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
             }
         }
 
+        // Record the location of the compton scattering event in x,y,z
+        conelist_1D[0 + i * 9] = linedata[1];
+        conelist_1D[1 + i * 9] = linedata[2];
+        conelist_1D[2 + i * 9] = linedata[3];
+
+        // record the cone axis unit vector
+        conelist_1D[3 + i * 9] = axis[0];
+        conelist_1D[4 + i * 9] = axis[1];
+        conelist_1D[5 + i * 9] = axis[2];
+
+        conelist_1D[6 + i * 9] = theta;
+
+
+
         linedata.clear();
     }
 
