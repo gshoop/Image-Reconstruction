@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     // Need to fix input string path so it cane be used on multiple systems. Currently it seems only absolute paths work.
-    string input_path = "/home/swuupii/ImageReconstruction/CZT_HN/output/dcs.dat";
+    string input_path = "/home/swuupie/Image-Reconstruction/CZT_HN/output/dcs.dat";
     // Need to define the FOV (or source space) and voxelize
     float x_begin, x_end, y_begin, y_end, z_begin, z_end;
     unsigned numVox_x, numVox_y, numVox_z;
