@@ -188,6 +188,7 @@ if __name__ == '__main__':
     dcs_hit = 'dcs_hit.dat'
     dcs_list = 'dcs.dat'
 
+    # First we will create 
     exclude_rayl_interactions(input_file,slim_hit)
     filter_dcs(slim_hit,dcs_hit)
     construct_coincidence_list(dcs_hit,dcs_list)
