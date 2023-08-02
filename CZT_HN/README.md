@@ -1,2 +1,3 @@
 # Geometry
-![image](https://user-images.githubusercontent.com/44107373/228923617-8006997f-2877-4878-a02c-3fadcac73c96.png)
+Below is the geometry of the CZT Dual Panel system.
+![gate2panelrev](https://github.com/gshoop/Image-Reconstruction/assets/44107373/4161e4f0-3089-403c-bbbd-1e59eac27bb5)
