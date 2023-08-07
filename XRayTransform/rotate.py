@@ -67,6 +67,7 @@ def radon_transform(image, thetas, n):
 
         for i in range(n):
             Sum0 = (2/np.size(thetas))*sum(rot_img[i,:])
+            #Sum0 = sum(rot_img[i,:])
             rt_img[n-1-i,th] = Sum0
 
     return rt_img
@@ -78,8 +79,8 @@ def backproject(rt, thetas, n):
             thetas: array containing angles of rotation
             n: size of image
     '''
-    img_recon = np.uint8(np.zeros((n,n)))
-    temp = np.uint8(np.zeros((n,n)))
+    img_recon = np.uint16(np.zeros((n,n)))
+    temp = np.uint16(np.zeros((n,n)))
     
     for th in range(np.size(thetas)):
         for i in range(n):
@@ -88,7 +89,10 @@ def backproject(rt, thetas, n):
         temp = naive_image_rotate(temp,-thetas[th],'same')
 
         img_recon += temp                                   # Normalization needed
-        # Need to take core of when pixel values overflow over 255
+        # Need to take care of when pixel values overflow over 255
+        #img_recon = np.uint8(np.max(img_recon)/255 * img_recon)
+    # z = np.max(img_recon)
+    # img_recon = z/255 * img_recon    
     return img_recon
 
     
