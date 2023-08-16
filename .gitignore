@@ -1,2 +1,5 @@
 .vscode
 *.o
+
+# Ignore Kimia_Greg script
+Hit_File.py
