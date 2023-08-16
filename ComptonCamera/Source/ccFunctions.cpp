@@ -63,8 +63,9 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
         utheta = UncertaintyDoubleScatter(E1,E2,0.1);
         KN = KleinNishina(E1,E2);
 
+        #ifdef DEBUG
         cout << i << ": Theta value: " << theta << endl;
-
+        #endif
         if ( theta == 0 ){
             errors++;
             KN = 0;
@@ -73,6 +74,7 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
         // Computing unit vector for cone axis of data. Need to validate DCSc data, some coincidences are scattering to opposite panels.
         vector<float> axis = UnitVector({linedata[5], linedata[6], linedata[7]}, {linedata[1], linedata[2], linedata[3]});
 
+        #ifdef DEBUG
         cout << "Unit Vector: {";
         for (unsigned i = 0; i < axis.size(); i++) {
             if (i < axis.size()-1) {
@@ -81,6 +83,7 @@ void ConstructCones( float* conelist_1D, string input, long unsigned num_cones){
                 cout << axis[i] << "}" << endl;
             }
         }
+        #endif
 
         // Record the location of the compton scattering event in x,y,z
         conelist_1D[0 + i * 9] = linedata[1];
@@ -116,16 +119,21 @@ vector<float> UnitVector(vector<float> start, vector<float> end){
     float normsq = 0;
     vector<float> vec(d);
 
+    for (unsigned i = 0; i < d; i++) {
+        vec[i] = end[i] -start[i];
+        normsq += vec[i] * vec[i];
+    }
+
+    #ifdef DEBUG
     cout << "Vector: {";
     for (unsigned i = 0; i < d; i++) {
-        vec[i] = end[i] - start[i];
-        normsq += vec[i] * vec[i];
         if (i < d-1) {
             cout << vec[i] << ", ";
         } else {
             cout << vec[i] << "} ";
         }
     }
+    #endif
     return ScalarVec( 1.0/sqrt(normsq), vec);
 }
 

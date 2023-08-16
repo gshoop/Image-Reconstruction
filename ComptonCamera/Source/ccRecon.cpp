@@ -5,6 +5,8 @@
 
 using namespace std;
 
+//#define DEBUG
+
 int main(int argc, char const *argv[])
 {
     // Need to fix input string path so it cane be used on multiple systems. Currently it seems only absolute paths work.
@@ -24,7 +26,9 @@ int main(int argc, char const *argv[])
     const float dely = (y_end - y_begin)/numVox_y;
     const float delz = (z_end - z_begin)/numVox_z;
 
-    cout << "Voxel dimensions: " << delx << "," << dely << "," << delz << "\n" << endl;
+    #ifdef DEBUG
+        cout << "Voxel dimensions: " << delx << "," << dely << "," << delz << "\n" << endl;
+    #endif
 
     // Instantiating the voxel position matrix and source distribution vector
     vector<vector<vector<vector<float> > > > position_matrix(numVox_x, vector<vector<vector<float> > >(numVox_y, vector<vector<float> >(numVox_z , {0,0,0} ) ) );
