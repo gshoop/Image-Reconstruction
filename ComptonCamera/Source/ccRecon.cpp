@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
     const float dely = (y_end - y_begin)/numVox_y;
     const float delz = (z_end - z_begin)/numVox_z;
 
-    #ifdef DEBUG
+    #ifdef DEBUG_VOXEL_DIM
         cout << "Voxel dimensions: " << delx << "," << dely << "," << delz << "\n" << endl;
     #endif
 

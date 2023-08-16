@@ -6,6 +6,7 @@
 #include <math.h>
 #include <string>
 #include <sstream>
+#include "../Headers/debug.h"
 
 using namespace std;
 
