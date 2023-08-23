@@ -2,6 +2,7 @@
 #include <iostream>
 #include <math.h>
 #include "../Headers/ccFunctions.h"
+#include "../Headers/debug.h"
 
 using namespace std;
 
