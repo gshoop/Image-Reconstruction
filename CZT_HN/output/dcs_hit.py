@@ -28,10 +28,13 @@ def filter_dcs(input_file, output_file):
             current_row = None
             double_compton = False
             compt_count = 0
+            photon_count = 1
             for line in infile:
                 columns = line.split()
                 event_id = int(columns[1])
                 process = columns[22]
+                if event_id != previous_event_id:
+                    photon_count += 1
                 if event_id == previous_event_id and previous_process == 'compt' and process == 'phot':
                     if compt_count == 1:
                         double_compton = True
@@ -52,6 +55,8 @@ def filter_dcs(input_file, output_file):
                 previous_event_id = event_id
                 previous_process = process
                 current_row = line
+    print("Total photons detected by system: ")
+    print(photon_count)
 
 def validate_panel_distance(input_file):
     '''
