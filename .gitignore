@@ -1,5 +1,5 @@
 .vscode
 *.o
-
+*.dat
 # Ignore Kimia_Greg script
 Hit_File.py
