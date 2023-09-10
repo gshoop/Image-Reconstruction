@@ -41,7 +41,7 @@ int main() {
 
   DefinePositions( position_matrix, f, XDIVI, YDIVI, ZDIVI, x_start, y_start, z_start, delx, dely, delz);
 
-  string input = "../../ImageReconstruction/CZT_HN/output/" + NAME + ".dat";
+  string input = "../CZT_HN/output/" + NAME + ".dat";
   CreateCones( conelist_1D, input, CONES, UE);
   cudaDeviceReset();
 

@@ -10,7 +10,7 @@ XDIVI = 40
 YDIVI = 40
 ZDIVI = 40
 
-CONES = 93230
+CONES = 93050
 
 x_start, x_end = -100, 100
 y_start, y_end = -75, 75

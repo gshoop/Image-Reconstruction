@@ -1,5 +1,6 @@
 .vscode
 *.o
 *.dat
+*.root
 # Ignore Kimia_Greg script
 Hit_File.py
