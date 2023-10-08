@@ -5,8 +5,8 @@
 
   Defining the Source Space
 -    X-limits = -100.0 , 100.0
--    Y-limits = -75.0 , 75.0
--    Z-limits = -100.0 , 100.0
+-    Y-limits = -100.0 , 100.0
+-    Z-limits = -75.0 , 75.0
 
 -    The number of voxels per dimension x,y,z = 40 , 40 , 40
 -    The number of theads per iteration block = 256
@@ -14,14 +14,14 @@
   THE NUMBER OF VOXELS MUST EQUAL THE NUMBER OF ITERATION THREADS
 
   Defining the Event Data
--    The total number of imported cones       = 93050
--    The number of theads per cone block      = 50
--    The number of cone blocks                = 1861
+-    The total number of imported cones       = 10000
+-    The number of theads per cone block      = 16
+-    The number of cone blocks                = 625
   THE NUMBER OF CONES MUST EQUAL THE NUMBER OF CONE THREADS
 
   Run Length and Saves
--    The total number of iterations     = 800
--    The number of iterations per save  = 100
+-    The total number of iterations     = 80
+-    The number of iterations per save  = 20
 
   Other Parameters
 -    The number of steps for numerical integration, must be even    = 10

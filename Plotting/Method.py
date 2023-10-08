@@ -13,11 +13,11 @@ XDIVI = 40
 YDIVI = 40
 ZDIVI = 40
 
-CONES = 93230
+CONES = 93000
 
 x_start, x_end = -100, 100
-y_start, y_end = -75, 75
-z_start, z_end = -100, 100
+y_start, y_end = -100, 100
+z_start, z_end = -75, 75
 
 It = 800
 

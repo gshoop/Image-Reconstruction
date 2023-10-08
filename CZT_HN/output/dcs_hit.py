@@ -28,7 +28,8 @@ def filter_dcs(input_file, output_file):
             current_row = None
             double_compton = False
             compt_count = 0
-            photon_count = 1
+            photon_count = 0
+            cone_count = 0
             for line in infile:
                 columns = line.split()
                 event_id = int(columns[1])
@@ -43,6 +44,7 @@ def filter_dcs(input_file, output_file):
                         outfile.write(line)
                         double_compton = False
                         compt_count = 0
+                        cone_count +=1
                     else:
                         compt_count = 0
                 elif event_id != previous_event_id and previous_process == 'compt' and process == 'compt':
@@ -57,10 +59,12 @@ def filter_dcs(input_file, output_file):
                 current_row = line
     print("Total photons detected by system: ")
     print(photon_count)
+    print("Compton Cones: ")
+    print(cone_count)
 
 def validate_panel_distance(input_file):
     '''
-    Validate panel distance and FOV in the x-direction by examining the position of hits in a GATE generated hit file.
+    Validate panel distance and FOV in the y-direction by examining the position of hits in a GATE generated hit file.
 
     Parameters:
         input_file: String containing the path of the input file. ".dat"
@@ -70,33 +74,33 @@ def validate_panel_distance(input_file):
     with open(input_file,'r') as infile:
         for line in infile:
             columns = line.split()
-            x_pos = float(columns[13])
-            if abs(x_pos) < expected_distance:
+            y_pos = float(columns[14])
+            if abs(y_pos) < expected_distance:
                 print("event ID:")
                 print(int(columns[1]))
-                print("x position:")
-                print(x_pos)
+                print("y position:")
+                print(y_pos)
                 return False
     return True
     
 def validate_panel_width(input_file):
     '''
-    Validates panel width and FOV in the y-direction by examining the position of hits in a GATE generated hit file.
+    Validates panel width and FOV in the x-direction by examining the position of hits in a GATE generated hit file.
 
     Parameters:
         input_file: String containing the path of the input file. ".dat"
     '''
 
-    expected_width = 7.5e1
+    expected_width = 1.0e2
     with open(input_file,'r') as infile:
         for line in infile:
             columns = line.split()
-            y_pos =  float(columns[14])
-            if abs(y_pos) > expected_width:
+            x_pos =  float(columns[13])
+            if abs(x_pos) > expected_width:
                 print("event ID:")
                 print(int(columns[1]))
-                print("y position:")
-                print(y_pos)
+                print("x position:")
+                print(x_pos)
                 return False
     return True
         
@@ -108,7 +112,7 @@ def validate_panel_height(input_file):
         input_file: String containing the path of the input file. ".dat"
     '''
 
-    expected_height = 1.0e2
+    expected_height = 7.5e1
     with open(input_file,'r') as infile:
         for line in infile:
             columns = line.split()
@@ -187,7 +191,7 @@ def construct_coincidence_list(input_file, output_file):
 
 
 if __name__ == '__main__':
-    debug = False
+    debug = True
     input_file = 'partial_Hits.dat'
     slim_hit = 'slim_hit.dat'
     dcs_hit = 'dcs_hit.dat'

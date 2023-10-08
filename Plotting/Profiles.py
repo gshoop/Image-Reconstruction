@@ -10,14 +10,14 @@ XDIVI = 40
 YDIVI = 40
 ZDIVI = 40
 
-CONES = 93050
+CONES = 10000
 
 x_start, x_end = -100, 100
-y_start, y_end = -75, 75
-z_start, z_end = -100, 100
+y_start, y_end = -100, 100
+z_start, z_end = -75, 75
 
-TotalIt = 800
-SAVEEVERY = 200
+TotalIt = 80
+SAVEEVERY = 20
 
 plotlist = [ 1 ]
 plotlist += range( SAVEEVERY , TotalIt + SAVEEVERY , SAVEEVERY )
