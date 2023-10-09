@@ -13,13 +13,13 @@ XDIVI = 40
 YDIVI = 40
 ZDIVI = 40
 
-CONES = 93000
+CONES = 10000
 
 x_start, x_end = -100, 100
 y_start, y_end = -100, 100
 z_start, z_end = -75, 75
 
-It = 800
+It = 80
 
 actual_locations = np.array( [ 0 , 0 , 0 ] )
 

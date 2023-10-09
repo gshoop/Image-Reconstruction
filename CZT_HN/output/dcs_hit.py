@@ -10,7 +10,7 @@ def exclude_rayl_interactions(input_file, output_file):
         with open(output_file, 'w') as outfile:
             for line in infile:
                 columns = line.split()
-                if columns[22] != 'Rayl':
+                if (columns[22] == 'compt') or (columns[22] == 'phot'):
                     outfile.write(line)
 
 def filter_dcs(input_file, output_file):
@@ -21,46 +21,43 @@ def filter_dcs(input_file, output_file):
         input_file: String containing the path of the input file. ".dat"
         output_file: String containing the path of the output file. ".dat"
     '''
+
     with open(input_file, 'r') as infile:
         with open(output_file, 'w') as outfile:
             previous_event_id = -1
             previous_process = None
-            current_row = None
-            double_compton = False
+            prev_line = None
             compt_count = 0
             photon_count = 0
-            cone_count = 0
+            DCSc_count = 0
             for line in infile:
                 columns = line.split()
                 event_id = int(columns[1])
                 process = columns[22]
                 if event_id != previous_event_id:
                     photon_count += 1
-                if event_id == previous_event_id and previous_process == 'compt' and process == 'phot':
-                    if compt_count == 1:
-                        double_compton = True
-                    if double_compton:
-                        outfile.write(current_row)
-                        outfile.write(line)
-                        double_compton = False
-                        compt_count = 0
-                        cone_count +=1
-                    else:
-                        compt_count = 0
-                elif event_id != previous_event_id and previous_process == 'compt' and process == 'compt':
-                    compt_count = 1
-                    double_compton = False
-                else:
-                    double_compton = False
                     if process == 'compt':
                         compt_count += 1
+                    else:
+                        compt_count = 0
+                if event_id == previous_event_id and previous_process == 'compt' and process == 'phot':
+                    if compt_count >= 1 and abs(float(columns[11])+float(prev_line.split()[11])-.909) < 0.010:
+                        outfile.write(prev_line)
+                        outfile.write(line)
+                        compt_count = 0
+                        DCSc_count +=1
+                    else:
+                        compt_count = 0
+                elif event_id == previous_event_id and previous_process == 'compt' and process != 'phot':
+                    compt_count = 0
+
                 previous_event_id = event_id
                 previous_process = process
-                current_row = line
+                prev_line = line
     print("Total photons detected by system: ")
     print(photon_count)
-    print("Compton Cones: ")
-    print(cone_count)
+    print("DCSc Events: ")
+    print(DCSc_count)
 
 def validate_panel_distance(input_file):
     '''
@@ -175,6 +172,10 @@ def construct_coincidence_list(input_file, output_file):
         output_file: String containing the path of the output file. ".dat"  
     '''
 
+    prompt_energy = 0.909
+    tol = 1e-2
+    cone_count = 0
+
     with open(input_file, 'r') as infile:
         with open(output_file, 'w') as outfile:
             previous_event_id = -1
@@ -184,10 +185,15 @@ def construct_coincidence_list(input_file, output_file):
                 event_id = int(columns[1])
                 process = columns[22]
                 if event_id == previous_event_id and previous_process == 'compt' and process == 'phot':
-                    outfile.write(f"{previous_columns[11]} {previous_columns[13]} {previous_columns[14]} {previous_columns[15]} {columns[11]} {columns[13]} {columns[14]} {columns[15]}\n")
+                    if abs((float(columns[11]) + float(previous_columns[11])) - prompt_energy) < tol:
+                        outfile.write(f"{previous_columns[11]} {previous_columns[13]} {previous_columns[14]} {previous_columns[15]} {columns[11]} {columns[13]} {columns[14]} {columns[15]}\n")
+                        cone_count += 1
                 previous_event_id = event_id
                 previous_process = process
                 previous_columns = columns
+
+    print("Compton Cones: ")
+    print(cone_count)
 
 
 if __name__ == '__main__':
@@ -198,8 +204,8 @@ if __name__ == '__main__':
     dcs_list = 'dcs.dat'
 
     # First we will create 
-    exclude_rayl_interactions(input_file,slim_hit)
-    filter_dcs(slim_hit,dcs_hit)
+    #exclude_rayl_interactions(input_file,slim_hit)
+    filter_dcs(input_file,dcs_hit)
     construct_coincidence_list(dcs_hit,dcs_list)
 
     if debug:

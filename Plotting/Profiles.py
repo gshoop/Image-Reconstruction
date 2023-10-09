@@ -16,8 +16,8 @@ x_start, x_end = -100, 100
 y_start, y_end = -100, 100
 z_start, z_end = -75, 75
 
-TotalIt = 80
-SAVEEVERY = 20
+TotalIt = 800
+SAVEEVERY = 800
 
 plotlist = [ 1 ]
 plotlist += range( SAVEEVERY , TotalIt + SAVEEVERY , SAVEEVERY )

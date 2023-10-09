@@ -20,13 +20,13 @@
   THE NUMBER OF CONES MUST EQUAL THE NUMBER OF CONE THREADS
 
   Run Length and Saves
--    The total number of iterations     = 80
--    The number of iterations per save  = 20
+-    The total number of iterations     = 800
+-    The number of iterations per save  = 800
 
   Other Parameters
 -    The number of steps for numerical integration, must be even    = 10
 -    The Noise Reducing Cuttoff as a fraction of the maximum value  = 0.001
--    The assumed uncertainty in the energy measurements in MeV      = 0.1
+-    The assumed uncertainty in the energy measurements in MeV      = 0.001
 
   Method of Saving Data (Can have more than one selected)
 -    DAT files in the same format as those produced by CORE = 0

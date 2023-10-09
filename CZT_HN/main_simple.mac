@@ -51,6 +51,10 @@
 # Inilization
 #----------------------------
 /gate/run/initialize
+/process/inactivate msc
+
+/run/setCut 1 mm
+/gate/physics/displayCuts
 
 #----------------------------
 # Digitizer
@@ -61,6 +65,7 @@
 # Source
 #----------------------------
 /control/execute ./macro/SingleGammaSource.mac
+#/control/execute ./macro/Zr89Source.mac
 
 #----------------------------
 # Data output
@@ -88,7 +93,8 @@
 #----------------------------
 # MersenneTwister
 /gate/random/setEngineName MersenneTwister
-/gate/random/setEngineSeed auto
+/gate/random/setEngineSeed 2023
+#/gate/random/setEngineSeed auto
 
 #----------------------------
 # Acquisition
