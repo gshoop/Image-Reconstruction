@@ -68,9 +68,6 @@ int main() {
 
   Print_Time_Complete( time_section_start , clock() );
 
-
-
-
   /////////////// Now the Iteration - starting with data transfer to the GPU ///////////////
   cout << "Proceeding with Iteration:" << '\n';
   time_section_start = clock();

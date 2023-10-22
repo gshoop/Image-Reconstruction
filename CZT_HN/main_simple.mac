@@ -52,8 +52,10 @@
 #----------------------------
 /gate/run/initialize
 /process/inactivate msc
+#/process/inactivate eIoni
+#/process/inactivate annihil
 
-/run/setCut 1 mm
+#/run/setCut 1 mm
 /gate/physics/displayCuts
 
 #----------------------------
@@ -64,8 +66,8 @@
 #----------------------------
 # Source
 #----------------------------
-/control/execute ./macro/SingleGammaSource.mac
-#/control/execute ./macro/Zr89Source.mac
+#/control/execute ./macro/SingleGammaSource.mac
+/control/execute ./macro/Zr89PointSource.mac
 
 #----------------------------
 # Data output

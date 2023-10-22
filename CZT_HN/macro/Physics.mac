@@ -1,8 +1,8 @@
 #----------------------------
 # Physics list 
 #----------------------------
-#/gate/physics/addProcess     RadioactiveDecay
-/gate/physics/addPhysicsList Livermore
+/gate/physics/addProcess     RadioactiveDecay
+/gate/physics/addPhysicsList em_standard_opt4
 
 #/gate/physics/processList Enabled
 #/gate/physics/processList Initialized  
@@ -11,6 +11,12 @@
 # Cut 
 #----------------------------
 
-#/gate/physics/Gamma/SetCutInRegion	    world	1 mm
-#/gate/physics/Electron/SetCutInRegion	world	1000 km
-#/gate/physics/Positron/SetCutInRegion	world	1 mm
+/gate/physics/Gamma/SetCutInRegion	    world	1 mm
+/gate/physics/Electron/SetCutInRegion	world	1 mm
+/gate/physics/Positron/SetCutInRegion	world	1 mm
+
+/gate/physics/Gamma/SetCutInRegion      pixel   1 mm
+/gate/physics/Electron/SetCutInRegion   pixel   1 mm
+/gate/physics/Positron/SetCutInRegion   pixel   0.01 mm
+
+/gate/physics/displayCuts

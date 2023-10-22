@@ -15,13 +15,13 @@
 
   Defining the Event Data
 -    The total number of imported cones       = 10000
--    The number of theads per cone block      = 16
--    The number of cone blocks                = 625
+-    The number of theads per cone block      = 40
+-    The number of cone blocks                = 250
   THE NUMBER OF CONES MUST EQUAL THE NUMBER OF CONE THREADS
 
   Run Length and Saves
--    The total number of iterations     = 800
--    The number of iterations per save  = 800
+-    The total number of iterations     = 80
+-    The number of iterations per save  = 80
 
   Other Parameters
 -    The number of steps for numerical integration, must be even    = 10

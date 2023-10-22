@@ -1,13 +1,20 @@
 # -------------------------------------------------------------
 # Source Geometry
 # -------------------------------------------------------------
-/gate/source/addSource				    point
+/gate/source/addSource				    point Extended
 /gate/source/point/gps/pos/type		    Volume
 /gate/source/point/gps/pos/shape		Sphere
 /gate/source/point/gps/pos/radius	    0.1 mm
 /gate/source/point/gps/ang/type			iso
 /gate/source/point/gps/centre           0. 0. 0. mm
 
-/gate/source/point/gps/particle gamma
-/gate/source/point/gps/energy 909 keV
-/gate/source/point/setActivity 40. MBq
+/gate/source/point/setType                  pPs
+/gate/source/point/setEnableDeexcitation    true
+/gate/source/point/setPromptGammaEnergy     909.0 keV
+/gate/source/point/setActivity              1 MBq
+/gate/source/point/setForcedUnstableFlag   true
+/gate/source/point/setForcedHalfLife        282276 s
+
+#/gate/source/point/gps/particle gamma
+#/gate/source/point/gps/energy 909 keV
+#/gate/source/point/setActivity 40. MBq

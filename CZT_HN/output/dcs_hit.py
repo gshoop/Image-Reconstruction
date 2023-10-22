@@ -41,7 +41,7 @@ def filter_dcs(input_file, output_file):
                     else:
                         compt_count = 0
                 if event_id == previous_event_id and previous_process == 'compt' and process == 'phot':
-                    if compt_count >= 1 and abs(float(columns[11])+float(prev_line.split()[11])-.909) < 0.010:
+                    if compt_count >= 1 and abs(float(columns[11])+float(prev_line.split()[11])-0.909) < 0.010:
                         outfile.write(prev_line)
                         outfile.write(line)
                         compt_count = 0
@@ -184,7 +184,7 @@ def construct_coincidence_list(input_file, output_file):
                 columns = line.split()
                 event_id = int(columns[1])
                 process = columns[22]
-                if event_id == previous_event_id and previous_process == 'compt' and process == 'phot':
+                if event_id == previous_event_id and previous_process == 'compt' and process == 'phot' and (int(columns[19]) == 0):
                     if abs((float(columns[11]) + float(previous_columns[11])) - prompt_energy) < tol:
                         outfile.write(f"{previous_columns[11]} {previous_columns[13]} {previous_columns[14]} {previous_columns[15]} {columns[11]} {columns[13]} {columns[14]} {columns[15]}\n")
                         cone_count += 1

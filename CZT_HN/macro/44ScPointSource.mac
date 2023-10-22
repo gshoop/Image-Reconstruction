@@ -1,0 +1,30 @@
+# Scandium-4 ion source with half-life of 3.97 hrs (14292 seconds)
+
+# -------------------------------------------------------------
+# Source Geometry
+# -------------------------------------------------------------
+/gate/source/addSource				    point
+/gate/source/point/gps/pos/type		    Volume
+/gate/source/point/gps/pos/shape		Sphere
+/gate/source/point/gps/pos/radius	    0.1 mm
+/gate/source/point/gps/ang/type			iso
+/gate/source/point/gps/centre           0. 0. 0. mm
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Zr-89 as ion source 
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/gate/source/point/gps/particle                 ion
+/gate/source/point/gps/ion                      21 44 0 0           # Z = 21, A = 44
+/gate/source/point/gps/ene/mono                 0. keV
+/gate/source/point/setActivity                  1.5 MBq
+/gate/source/point/setForcedUnstableFlag        true
+/gate/source/point/setForcedHalfLife            14292 s
+#/gate/source/point/useDefaultHalfLife
+
+
+# =================================================================================
+# ---------------------------------------------------------------------------------
+#   NOTE: In Physics.mac file, be sure to add process 'RadioactiveDecay' in order
+#         to get decay physics for ion source.
+#           - /gate/physics/addProcess RadioactiveDecay
+# =================================================================================
