@@ -1,4 +1,4 @@
-# Scandium-4 ion source with half-life of 3.97 hrs (14292 seconds)
+# Scandium-44 ion source with half-life of 3.97 hrs (14292 seconds)
 
 # -------------------------------------------------------------
 # Source Geometry
@@ -11,15 +11,15 @@
 /gate/source/point/gps/centre           0. 0. 0. mm
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# Zr-89 as ion source 
+# Sc-44 as ion source 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 /gate/source/point/gps/particle                 ion
 /gate/source/point/gps/ion                      21 44 0 0           # Z = 21, A = 44
 /gate/source/point/gps/ene/mono                 0. keV
 /gate/source/point/setActivity                  1.5 MBq
 /gate/source/point/setForcedUnstableFlag        true
-/gate/source/point/setForcedHalfLife            14292 s
-#/gate/source/point/useDefaultHalfLife
+#/gate/source/point/setForcedHalfLife            14292 s
+/gate/source/point/useDefaultHalfLife
 
 
 # =================================================================================

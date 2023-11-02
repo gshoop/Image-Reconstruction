@@ -11,15 +11,15 @@
 /gate/source/point/gps/centre           0. 0. 0. mm
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# Zr-89 as ion source 
+# 68-Ga as ion source 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 /gate/source/point/gps/particle                 ion
 /gate/source/point/gps/ion                      31 68 0 0           # Z = 31, A = 68
 /gate/source/point/gps/ene/mono                 0. keV
 /gate/source/point/setActivity                  1.5 MBq
 /gate/source/point/setForcedUnstableFlag        true
-/gate/source/point/setForcedHalfLife            4070 s
-#/gate/source/point/useDefaultHalfLife
+#/gate/source/point/setForcedHalfLife            4070 s
+/gate/source/point/useDefaultHalfLife
 
 
 # =================================================================================
