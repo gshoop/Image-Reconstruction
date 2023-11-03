@@ -11,12 +11,12 @@
 # Cut 
 #----------------------------
 
-/gate/physics/Gamma/SetCutInRegion	    world	1 mm
-/gate/physics/Electron/SetCutInRegion	world	1 mm
-/gate/physics/Positron/SetCutInRegion	world	1 mm
-
-/gate/physics/Gamma/SetCutInRegion      pixel   1 mm
-/gate/physics/Electron/SetCutInRegion   pixel   1 mm
-/gate/physics/Positron/SetCutInRegion   pixel   0.01 mm
-
-/gate/physics/displayCuts
+#/gate/physics/Gamma/SetCutInRegion	    world	1 mm
+#/gate/physics/Electron/SetCutInRegion	world	1 mm
+#/gate/physics/Positron/SetCutInRegion	world	1 mm
+#
+#/gate/physics/Gamma/SetCutInRegion      pixel   1 mm
+#/gate/physics/Electron/SetCutInRegion   pixel   1 mm
+#/gate/physics/Positron/SetCutInRegion   pixel   0.01 mm
+#
+#/gate/physics/displayCuts

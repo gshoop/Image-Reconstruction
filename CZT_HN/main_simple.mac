@@ -55,8 +55,10 @@
 #/process/inactivate eIoni
 #/process/inactivate annihil
 
-#/run/setCut 1 mm
+/run/setCut 1 mm
 /gate/physics/displayCuts
+/gate/physics/processList Enabled
+/gate/physics/displayCut
 
 #----------------------------
 # Digitizer
@@ -67,7 +69,7 @@
 # Source
 #----------------------------
 #/control/execute ./macro/SingleGammaSource.mac
-/control/execute ./macro/Zr89PointSource.mac
+/control/execute ./macro/44ScPointSource.mac
 
 #----------------------------
 # Data output
@@ -75,7 +77,7 @@
 
 # ASCII output
 /gate/output/ascii/enable
-/gate/output/ascii/setFileName                ./output/partial_
+/gate/output/ascii/setFileName                ./output/ScPs_RS2023
 /gate/output/ascii/setOutFileHitsFlag         1
 /gate/output/ascii/setOutFileSinglesFlag      0
 /gate/output/ascii/setOutFileCoincidencesFlag 0
@@ -85,7 +87,7 @@
 
 # ROOT Output format
 /gate/output/root/enable
-/gate/output/root/setFileName             ./output/partial_
+/gate/output/root/setFileName             ./output/ScPs_RS2023
 /gate/output/root/setRootHitFlag          1
 /gate/output/root/setRootSinglesFlag      0
 /gate/output/root/setRootCoincidencesFlag 0
