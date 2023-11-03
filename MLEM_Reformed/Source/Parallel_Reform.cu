@@ -89,7 +89,6 @@ int main() {
   for (unsigned It = 1; It <= TOTALIT; It++) {
     time_iter = clock();
 
-    // GPU Functions are called with the parameters << blocks , threads_per_block >>
     Interior_Sum      <<< CBLOCKS, CTHREADSPB >>> ( f_d, voxel_cone_interaction_d, lambda_vector_d, XDIVI, YDIVI, ZDIVI, CONES );
     Iterate           <<< IBLOCKS, ITHREADSPB >>> ( f_d, voxel_cone_interaction_d, lambda_vector_d, CONES );
     Find_Max          <<< 1, ITHREADSPB, ITHREADSPB*sizeof(float) >>> ( f_d, voxel_max_d, XDIVI, YDIVI, ZDIVI, ITHREADSPB ); // This function has the extra parameter. The amount of shared memory.
