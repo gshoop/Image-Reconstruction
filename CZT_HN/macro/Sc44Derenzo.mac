@@ -29,7 +29,7 @@
 # Segment 1 _ diameter 2.5 mm
 
 /gate/source/addSource sphere1
-/gate/source/sphere1/setActivity 1. MBq
+/gate/source/sphere1/setActivity 1.0 MBq
 /gate/source/sphere1/gps/centre 0. 15.3 0. mm
 /gate/source/sphere1/gps/type Volume
 /gate/source/sphere1/gps/shape Sphere
@@ -39,6 +39,7 @@
 /gate/source/sphere1/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere1/gps/ene/mono   0. keV
 /gate/source/sphere1/setForcedUnstableFlag        true
+/gate/source/sphere1/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere2
@@ -52,6 +53,7 @@
 /gate/source/sphere2/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere2/gps/ene/mono   0. keV
 /gate/source/sphere2/setForcedUnstableFlag        true
+/gate/source/sphere2/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere3
@@ -65,12 +67,13 @@
 /gate/source/sphere3/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere3/gps/ene/mono   0. keV
 /gate/source/sphere3/setForcedUnstableFlag        true
+/gate/source/sphere3/useDefaultHalfLife
 /gate/source/list
 
 # Segment 2 _ diameter 2.0 mm
 
 /gate/source/addSource sphere4
-/gate/source/sphere4/setActivity 10000000. Bq
+/gate/source/sphere4/setActivity 750. kBq
 /gate/source/sphere4/gps/centre -7.3 0. 0. mm
 /gate/source/sphere4/gps/type Volume
 /gate/source/sphere4/gps/shape Sphere
@@ -80,10 +83,11 @@
 /gate/source/sphere4/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere4/gps/ene/mono   0. keV
 /gate/source/sphere4/setForcedUnstableFlag        true
+/gate/source/sphere4/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere5
-/gate/source/sphere5/setActivity 10000000. Bq
+/gate/source/sphere5/setActivity 750. kBq
 /gate/source/sphere5/gps/centre -14.6 4. 0. mm
 /gate/source/sphere5/gps/type Volume
 /gate/source/sphere5/gps/shape Sphere
@@ -93,10 +97,11 @@
 /gate/source/sphere5/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere5/gps/ene/mono   0. keV
 /gate/source/sphere5/setForcedUnstableFlag        true
+/gate/source/sphere5/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere6
-/gate/source/sphere6/setActivity 10000000. Bq
+/gate/source/sphere6/setActivity 750. kBq
 /gate/source/sphere6/gps/centre -14.6 -4. 0. mm
 /gate/source/sphere6/gps/type Volume
 /gate/source/sphere6/gps/shape Sphere
@@ -106,12 +111,13 @@
 /gate/source/sphere6/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere6/gps/ene/mono   0. keV
 /gate/source/sphere6/setForcedUnstableFlag        true
+/gate/source/sphere6/useDefaultHalfLife
 /gate/source/list
 
 # Segment 3 _ diameter 1.5 mm
 
 /gate/source/addSource sphere7
-/gate/source/sphere7/setActivity 7500000. Bq
+/gate/source/sphere7/setActivity 600. kBq
 /gate/source/sphere7/gps/centre -2. -4.33 0. mm
 /gate/source/sphere7/gps/type Volume
 /gate/source/sphere7/gps/shape Sphere
@@ -121,10 +127,11 @@
 /gate/source/sphere7/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere7/gps/ene/mono   0. keV
 /gate/source/sphere7/setForcedUnstableFlag        true
+/gate/source/sphere7/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere8
-/gate/source/sphere8/setActivity 7500000. Bq
+/gate/source/sphere8/setActivity 600. kBq
 /gate/source/sphere8/gps/centre -6. -8.66 0. mm
 /gate/source/sphere8/gps/type Volume
 /gate/source/sphere8/gps/shape Sphere
@@ -134,10 +141,11 @@
 /gate/source/sphere8/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere8/gps/ene/mono   0. keV
 /gate/source/sphere8/setForcedUnstableFlag        true
+/gate/source/sphere8/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere9
-/gate/source/sphere9/setActivity 7500000. Bq
+/gate/source/sphere9/setActivity 600. kBq
 /gate/source/sphere9/gps/centre -10.6 -13.3 0. mm
 /gate/source/sphere9/gps/type Volume
 /gate/source/sphere9/gps/shape Sphere
@@ -147,11 +155,12 @@
 /gate/source/sphere9/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere9/gps/ene/mono   0. keV
 /gate/source/sphere9/setForcedUnstableFlag        true
+/gate/source/sphere9/useDefaultHalfLife
 /gate/source/list
 
 
 /gate/source/addSource sphere10
-/gate/source/sphere10/setActivity 7500000. Bq
+/gate/source/sphere10/setActivity 600. kBq
 /gate/source/sphere10/gps/centre -5. -14.66 0. mm
 /gate/source/sphere10/gps/type Volume
 /gate/source/sphere10/gps/shape Sphere
@@ -161,10 +170,11 @@
 /gate/source/sphere10/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere10/gps/ene/mono   0. keV
 /gate/source/sphere10/setForcedUnstableFlag        true
+/gate/source/sphere10/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere11
-/gate/source/sphere11/setActivity 7500000. Bq
+/gate/source/sphere11/setActivity 600. kBq
 /gate/source/sphere11/gps/centre 0. -10.66 0. mm
 /gate/source/sphere11/gps/type Volume
 /gate/source/sphere11/gps/shape Sphere
@@ -174,10 +184,11 @@
 /gate/source/sphere11/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere11/gps/ene/mono   0. keV
 /gate/source/sphere11/setForcedUnstableFlag        true
+/gate/source/sphere11/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere12
-/gate/source/sphere12/setActivity 7500000. Bq
+/gate/source/sphere12/setActivity 600. kBq
 /gate/source/sphere12/gps/centre 1. -16.6 0. mm
 /gate/source/sphere12/gps/type Volume
 /gate/source/sphere12/gps/shape Sphere
@@ -187,13 +198,14 @@
 /gate/source/sphere12/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere12/gps/ene/mono   0. keV
 /gate/source/sphere12/setForcedUnstableFlag        true
+/gate/source/sphere12/useDefaultHalfLife
 /gate/source/list
 
 
 # Segment 4 _ diameter 1.25 mm
 
 /gate/source/addSource sphere13
-/gate/source/sphere13/setActivity 6000000. Bq
+/gate/source/sphere13/setActivity 500. kBq
 /gate/source/sphere13/gps/centre 5.6 -3.66 0. mm
 /gate/source/sphere13/gps/type Volume
 /gate/source/sphere13/gps/shape Sphere
@@ -203,10 +215,11 @@
 /gate/source/sphere13/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere13/gps/ene/mono   0. keV
 /gate/source/sphere13/setForcedUnstableFlag        true
+/gate/source/sphere13/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere14
-/gate/source/sphere14/setActivity 6000000. Bq
+/gate/source/sphere14/setActivity 500. kBq
 /gate/source/sphere14/gps/centre 10.6 -4. 0. mm
 /gate/source/sphere14/gps/type Volume
 /gate/source/sphere14/gps/shape Sphere
@@ -216,10 +229,11 @@
 /gate/source/sphere14/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere14/gps/ene/mono   0. keV
 /gate/source/sphere14/setForcedUnstableFlag        true
+/gate/source/sphere14/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere15
-/gate/source/sphere15/setActivity 6000000. Bq
+/gate/source/sphere15/setActivity 500. kBq
 /gate/source/sphere15/gps/centre 15.6 -4.33 0. mm
 /gate/source/sphere15/gps/type Volume
 /gate/source/sphere15/gps/shape Sphere
@@ -229,11 +243,12 @@
 /gate/source/sphere15/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere15/gps/ene/mono   0. keV
 /gate/source/sphere15/setForcedUnstableFlag        true
+/gate/source/sphere15/useDefaultHalfLife
 /gate/source/list
 
 
 /gate/source/addSource sphere16
-/gate/source/sphere16/setActivity 6000000. Bq
+/gate/source/sphere16/setActivity 500. kBq
 /gate/source/sphere16/gps/centre 7.66 -8.33 0. mm
 /gate/source/sphere16/gps/type Volume
 /gate/source/sphere16/gps/shape Sphere
@@ -243,10 +258,11 @@
 /gate/source/sphere16/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere16/gps/ene/mono   0. keV
 /gate/source/sphere16/setForcedUnstableFlag        true
+/gate/source/sphere16/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere17
-/gate/source/sphere17/setActivity 6000000. Bq
+/gate/source/sphere17/setActivity 500. kBq
 /gate/source/sphere17/gps/centre 12.6 -8.33 0. mm
 /gate/source/sphere17/gps/type Volume
 /gate/source/sphere17/gps/shape Sphere
@@ -256,10 +272,11 @@
 /gate/source/sphere17/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere17/gps/ene/mono   0. keV
 /gate/source/sphere17/setForcedUnstableFlag        true
+/gate/source/sphere17/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere18
-/gate/source/sphere18/setActivity 6000000. Bq
+/gate/source/sphere18/setActivity 500. kBq
 /gate/source/sphere18/gps/centre 10. -12.6 0. mm
 /gate/source/sphere18/gps/type Volume
 /gate/source/sphere18/gps/shape Sphere
@@ -269,13 +286,14 @@
 /gate/source/sphere18/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere18/gps/ene/mono   0. keV
 /gate/source/sphere18/setForcedUnstableFlag        true
+/gate/source/sphere18/useDefaultHalfLife
 /gate/source/list
 
 
 # Segment 5 _ diameter 1.0 mm
 
 /gate/source/addSource sphere19
-/gate/source/sphere19/setActivity 5000000. Bq
+/gate/source/sphere19/setActivity 400. kBq
 /gate/source/sphere19/gps/centre 4. 3.66 0. mm
 /gate/source/sphere19/gps/type Volume
 /gate/source/sphere19/gps/shape Sphere
@@ -285,10 +303,11 @@
 /gate/source/sphere19/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere19/gps/ene/mono   0. keV
 /gate/source/sphere19/setForcedUnstableFlag        true
+/gate/source/sphere19/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere20
-/gate/source/sphere20/setActivity 5000000. Bq
+/gate/source/sphere20/setActivity 400. kBq
 /gate/source/sphere20/gps/centre 7.66 4.33  0. mm
 /gate/source/sphere20/gps/type Volume
 /gate/source/sphere20/gps/shape Sphere
@@ -298,10 +317,11 @@
 /gate/source/sphere20/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere20/gps/ene/mono   0. keV
 /gate/source/sphere20/setForcedUnstableFlag        true
+/gate/source/sphere20/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere21
-/gate/source/sphere21/setActivity 5000000. Bq
+/gate/source/sphere21/setActivity 400. kBq
 /gate/source/sphere21/gps/centre 11.33 4.66 0. mm
 /gate/source/sphere21/gps/type Volume
 /gate/source/sphere21/gps/shape Sphere
@@ -311,11 +331,12 @@
 /gate/source/sphere21/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere21/gps/ene/mono   0. keV
 /gate/source/sphere21/setForcedUnstableFlag        true
+/gate/source/sphere21/useDefaultHalfLife
 /gate/source/list
 
 
 /gate/source/addSource sphere22
-/gate/source/sphere22/setActivity 5000000. Bq
+/gate/source/sphere22/setActivity 400. kBq
 /gate/source/sphere22/gps/centre 15.6 5.33 0. mm
 /gate/source/sphere22/gps/type Volume
 /gate/source/sphere22/gps/shape Sphere
@@ -325,10 +346,11 @@
 /gate/source/sphere22/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere22/gps/ene/mono   0. keV
 /gate/source/sphere22/setForcedUnstableFlag        true
+/gate/source/sphere22/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere23
-/gate/source/sphere23/setActivity 5000000. Bq
+/gate/source/sphere23/setActivity 400. kBq
 /gate/source/sphere23/gps/centre 5.33 7.33 0. mm
 /gate/source/sphere23/gps/type Volume
 /gate/source/sphere23/gps/shape Sphere
@@ -338,10 +360,11 @@
 /gate/source/sphere23/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere23/gps/ene/mono   0. keV
 /gate/source/sphere23/setForcedUnstableFlag        true
+/gate/source/sphere23/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere24
-/gate/source/sphere24/setActivity 5000000. Bq
+/gate/source/sphere24/setActivity 400. kBq
 /gate/source/sphere24/gps/centre 9. 8. 0. mm
 /gate/source/sphere24/gps/type Volume
 /gate/source/sphere24/gps/shape Sphere
@@ -351,10 +374,11 @@
 /gate/source/sphere24/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere24/gps/ene/mono   0. keV
 /gate/source/sphere24/setForcedUnstableFlag        true
+/gate/source/sphere24/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere25
-/gate/source/sphere25/setActivity 5000000. Bq
+/gate/source/sphere25/setActivity 400. kBq
 /gate/source/sphere25/gps/centre 13.33 8. 0. mm
 /gate/source/sphere25/gps/type Volume
 /gate/source/sphere25/gps/shape Sphere
@@ -364,11 +388,12 @@
 /gate/source/sphere25/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere25/gps/ene/mono   0. keV
 /gate/source/sphere25/setForcedUnstableFlag        true
+/gate/source/sphere25/useDefaultHalfLife
 /gate/source/list
 
 
 /gate/source/addSource sphere26
-/gate/source/sphere26/setActivity 5000000. Bq
+/gate/source/sphere26/setActivity 400. kBq
 /gate/source/sphere26/gps/centre 7. 11.33 0. mm
 /gate/source/sphere26/gps/type Volume
 /gate/source/sphere26/gps/shape Sphere
@@ -378,10 +403,11 @@
 /gate/source/sphere26/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere26/gps/ene/mono   0. keV
 /gate/source/sphere26/setForcedUnstableFlag        true
+/gate/source/sphere26/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere27
-/gate/source/sphere27/setActivity 5000000. Bq
+/gate/source/sphere27/setActivity 400. kBq
 /gate/source/sphere27/gps/centre 11. 11.33 0. mm
 /gate/source/sphere27/gps/type Volume
 /gate/source/sphere27/gps/shape Sphere
@@ -391,10 +417,11 @@
 /gate/source/sphere27/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere27/gps/ene/mono   0. keV
 /gate/source/sphere27/setForcedUnstableFlag        true
+/gate/source/sphere27/useDefaultHalfLife
 /gate/source/list
 
 /gate/source/addSource sphere28
-/gate/source/sphere28/setActivity 5000000. Bq
+/gate/source/sphere28/setActivity 400. kBq
 /gate/source/sphere28/gps/centre 8.33 14.66 0. mm
 /gate/source/sphere28/gps/type Volume
 /gate/source/sphere28/gps/shape Sphere
@@ -404,4 +431,5 @@
 /gate/source/sphere28/gps/ion  21 44 0 0           # Z = 21, A = 44
 /gate/source/sphere28/gps/ene/mono   0. keV
 /gate/source/sphere28/setForcedUnstableFlag        true
+/gate/source/sphere28/useDefaultHalfLife
 /gate/source/list
