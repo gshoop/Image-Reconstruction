@@ -24,17 +24,13 @@ plotlist += range( SAVEEVERY , TotalIt + SAVEEVERY , SAVEEVERY )
 
 svname = name + "_C" + str(CONES) + "_x" + str(XDIVI) + "y" + str(YDIVI) + "z" + str(ZDIVI)
 
-
+fig , axs = plt.subplots(4,5)
+fig.suptitle('44-Sc Point Source %d Compton Cones' %(CONES) )
+images = []
+l = 0
+m = 0
 for It in plotlist:
 
-    fig, ax = plt.subplots()
-    fig.suptitle('44-Sc Point Source %d Compton Cones' %(CONES) )
-    images = []
-
-    ax.set_xlabel('x direction (mm)')
-    ax.set_ylabel('y direction (mm)')
-    ax.yaxis.set_label_position("right")
-    
     file_name = svname + "_I" + str(It)
 
     F=open ('../Output/' + file_name + '.csv', 'r')
@@ -61,13 +57,36 @@ for It in plotlist:
         fy[j] += float(columns[0])
         fz[k] += float(columns[0])
 
-    heatmap = ax.imshow(fxy, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,y_start,y_end])
 
+    print(l)
+    print(m)
+    print("space")
+    
 
-    ax.set_title( str(It) + " Iteration(s)" )
-    #plt.tight_layout()
-    cbar = fig.colorbar(heatmap)
+    if m < 5 and l < 4:
+        images.append(axs[l,m].imshow(fxz, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,z_start,z_end]))
+        axs[l,m].set_title( str(It) + " Iteration(s)" )
+        m += 1
+    else:
+        m = 0
+        l += 1
+        images.append(axs[l,m].imshow(fxz, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,z_start,z_end]))
+        axs[l,m].set_title( str(It) + " Iteration(s)" )
+
+    vmin = min(image.get_array().min() for image in images)
+    vmax = max(image.get_array().max() for image in images)
+    norm = plt.Normalize(vmin=vmin, vmax=vmax)
+
+    for im in images:
+        im.set_norm(norm)
+    print(vmax)
 
     
-    fig.savefig('../Images/Iterated_' + file_name + '.png')
-    plt.close(fig)
+    #plt.tight_layout()
+
+cb_ax = fig.add_axes([0.02,0.05,0.01,0.9])
+cbar = fig.colorbar(images[1], cax=cb_ax,)
+
+plt.show()
+fig.savefig('../Images/Distribution_' + file_name + '.png')
+plt.close(fig)
