@@ -2,5 +2,6 @@
 *.o
 *.dat
 *.root
+*.csv
 # Ignore Kimia_Greg script
 #Hit_File.py

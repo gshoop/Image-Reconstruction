@@ -4,20 +4,20 @@ import matplotlib as mpl
 from cycler import cycler
 mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
-name = "dcs_"
+name = "sc44_dcs_"
 
-XDIVI = 40
-YDIVI = 40
-ZDIVI = 40
+XDIVI = 80
+YDIVI = 80
+ZDIVI = 80
 
 CONES = 10000
 
-x_start, x_end = -100, 100
-y_start, y_end = -100, 100
-z_start, z_end = -75, 75
+x_start, x_end = -40,40
+y_start, y_end = -40,40
+z_start, z_end = -40,40
 
-TotalIt = 80
-SAVEEVERY = 80
+TotalIt = 10
+SAVEEVERY = 10
 
 plotlist = [ 1 ]
 plotlist += range( SAVEEVERY , TotalIt + SAVEEVERY , SAVEEVERY )
@@ -72,7 +72,7 @@ for It in plotlist:
         fz[k] += float(columns[0])
 
 
-    heatmap = ax.imshow(fxz, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,z_start,z_end], interpolation='gaussian' )
+    heatmap = ax.imshow(fxz, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,z_start,z_end] )
 
     axx.step( xspace , fx/max(fx) , where = 'mid' )
     axy.step( yspace , fy/max(fy) , where = 'mid' )
@@ -80,7 +80,7 @@ for It in plotlist:
 
     ax.set_title( str(It) + " Iteration(s)" )
     plt.tight_layout()
-
+fig.colorbar(heatmap)
 plt.show()
 fig.savefig('../Images/Profile_' + file_name + '.png')
 plt.close(fig)

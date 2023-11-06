@@ -1,5 +1,5 @@
   File Naming
-1)    Name of the input file              = dcs
+1)    Name of the input file              = sc44_dcs
 2)    Added Modifier to the output name   = 
 
 

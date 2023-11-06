@@ -13,7 +13,7 @@ def exclude_rayl_interactions(input_file, output_file):
                 if (columns[22] == 'compt') or (columns[22] == 'phot'):
                     outfile.write(line)
 
-def filter_dcs(input_file, output_file):
+def filter_dcs(input_file, output_file, prompt_energy):
     '''
     Filters a ".dat" hit file and outputs only double compton scattering events.
 
@@ -41,7 +41,7 @@ def filter_dcs(input_file, output_file):
                     else:
                         compt_count = 0
                 if event_id == previous_event_id and previous_process == 'compt' and process == 'phot':
-                    if compt_count >= 1 and abs(float(columns[11])+float(prev_line.split()[11])-0.909) < 0.010:
+                    if compt_count >= 1 and abs(float(columns[11])+float(prev_line.split()[11])-prompt_energy) < 0.010:
                         outfile.write(prev_line)
                         outfile.write(line)
                         compt_count = 0
@@ -54,7 +54,7 @@ def filter_dcs(input_file, output_file):
                 previous_event_id = event_id
                 previous_process = process
                 prev_line = line
-    print("Total photons detected by system: ")
+    print("Total events detected by system: ")
     print(photon_count)
     print("DCSc Events: ")
     print(DCSc_count)
@@ -122,7 +122,7 @@ def validate_panel_height(input_file):
                 return False
     return True
 
-def validate_dcs(input_file):
+def validate_dcs(input_file, prompt_energy):
     '''
     Validates the filter_dcs function to confirm whether the dcs events sum up to the gamma energy level.
 
@@ -131,7 +131,6 @@ def validate_dcs(input_file):
     '''
 
     tolerance = 1e-2
-    target_energy = 0.909
     with open(input_file, 'r') as infile:
         event_ids = set()
         sums = {}
@@ -146,14 +145,14 @@ def validate_dcs(input_file):
                 event_ids.add(event_id)
 
     for event_id, sum in sums.items():
-        if sum > target_energy + tolerance and sum < target_energy + tolerance:
+        if sum > prompt_energy + tolerance and sum < prompt_energy + tolerance:
             print(event_id)
             print(sum)
             return False
 
     return True
 
-def construct_coincidence_list(input_file, output_file):
+def construct_coincidence_list(input_file, output_file, prompt_energy):
     '''
     Takes dcs GATE generated hit file and generates an output of the coincidences. The structure of the output
     file is as follows:
@@ -172,7 +171,6 @@ def construct_coincidence_list(input_file, output_file):
         output_file: String containing the path of the output file. ".dat"  
     '''
 
-    prompt_energy = 0.909
     tol = 1e-2
     cone_count = 0
 
@@ -198,18 +196,20 @@ def construct_coincidence_list(input_file, output_file):
 
 if __name__ == '__main__':
     debug = True
-    input_file = 'partial_Hits.dat'
+    input_file = 'ScPs_RS2023Hits.dat'
     slim_hit = 'slim_hit.dat'
     dcs_hit = 'dcs_hit.dat'
-    dcs_list = 'dcs.dat'
+    dcs_list = 'sc44_dcs.dat'
+
+    prompt_energy = 1.157
 
     # First we will create 
     #exclude_rayl_interactions(input_file,slim_hit)
-    filter_dcs(input_file,dcs_hit)
-    construct_coincidence_list(dcs_hit,dcs_list)
+    filter_dcs(input_file,dcs_hit,prompt_energy)
+    construct_coincidence_list(dcs_hit,dcs_list,prompt_energy)
 
     if debug:
-        if validate_dcs(dcs_hit):
+        if validate_dcs(dcs_hit,prompt_energy):
             print("Data valid")
         else:
             print("error: dcs data invalid")
