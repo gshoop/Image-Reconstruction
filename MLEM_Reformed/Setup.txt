@@ -1,26 +1,26 @@
   File Naming
-1)    Name of the input file              = sc44_dcs
+1)    Name of the input file              = sc442Ps_dcs
 2)    Added Modifier to the output name   = 
 
 
   Defining the Source Space
--    X-limits = -40.0 , 40.0
--    Y-limits = -40.0 , 40.0
--    Z-limits = -40.0 , 40.0
+-    X-limits = -20.0 , 20.0
+-    Y-limits = -20.0 , 20.0
+-    Z-limits = -20.0 , 20.0
 
--    The number of voxels per dimension x,y,z = 80, 80, 80
--    The number of theads per iteration block = 512
--    The number of iteration blocks           = 1000
+-    The number of voxels per dimension x,y,z = 40, 40, 40
+-    The number of theads per iteration block = 256
+-    The number of iteration blocks           = 250
   THE NUMBER OF VOXELS MUST EQUAL THE NUMBER OF ITERATION THREADS
 
   Defining the Event Data
 -    The total number of imported cones       = 10000
--    The number of theads per cone block      = 40
--    The number of cone blocks                = 250
+-    The number of theads per cone block      = 80
+-    The number of cone blocks                = 125
   THE NUMBER OF CONES MUST EQUAL THE NUMBER OF CONE THREADS
 
   Run Length and Saves
--    The total number of iterations     = 10
+-    The total number of iterations     = 20
 -    The number of iterations per save  = 10
 
   Other Parameters

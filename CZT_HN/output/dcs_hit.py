@@ -196,10 +196,10 @@ def construct_coincidence_list(input_file, output_file, prompt_energy):
 
 if __name__ == '__main__':
     debug = True
-    input_file = 'ScPs_RS2023Hits.dat'
+    input_file = 'Sc2Ps_RS2023Hits.dat'
     slim_hit = 'slim_hit.dat'
     dcs_hit = 'dcs_hit.dat'
-    dcs_list = 'sc44_dcs.dat'
+    dcs_list = 'sc442Ps_dcs.dat'
 
     prompt_energy = 1.157
 

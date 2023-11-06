@@ -4,19 +4,19 @@ import matplotlib as mpl
 from cycler import cycler
 mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
-name = "sc44_dcs_"
+name = "sc442Ps_dcs_"
 
-XDIVI = 80
-YDIVI = 80
-ZDIVI = 80
+XDIVI = 40
+YDIVI = 40
+ZDIVI = 40
 
 CONES = 10000
 
-x_start, x_end = -40,40
-y_start, y_end = -40,40
-z_start, z_end = -40,40
+x_start, x_end = -20,20
+y_start, y_end = -20,20
+z_start, z_end = -20,20
 
-TotalIt = 10
+TotalIt = 20
 SAVEEVERY = 10
 
 plotlist = [ 1 ]
@@ -58,6 +58,7 @@ for It in plotlist:
     fz = np.zeros(ZDIVI)
 
     fxz = [[ 0 for i in range(XDIVI) ]  for k in range(ZDIVI)]
+    fxy = [[ 0 for i in range(XDIVI) ]  for k in range(YDIVI)]
 
     for line in F:
         line=line.strip()
@@ -67,12 +68,13 @@ for It in plotlist:
         k = int(columns[6])
 
         fxz[k][i] += float(columns[0])
+        fxy[j][i] += float(columns[0])
         fx[i] += float(columns[0])
         fy[j] += float(columns[0])
         fz[k] += float(columns[0])
 
 
-    heatmap = ax.imshow(fxz, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,z_start,z_end] )
+    heatmap = ax.imshow(fxy, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,y_start,y_end])
 
     axx.step( xspace , fx/max(fx) , where = 'mid' )
     axy.step( yspace , fy/max(fy) , where = 'mid' )
