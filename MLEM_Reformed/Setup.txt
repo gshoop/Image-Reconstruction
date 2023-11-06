@@ -21,7 +21,7 @@
 
   Run Length and Saves
 -    The total number of iterations     = 20
--    The number of iterations per save  = 10
+-    The number of iterations per save  = 1
 
   Other Parameters
 -    The number of steps for numerical integration, must be even    = 10
