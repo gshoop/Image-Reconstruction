@@ -47,7 +47,6 @@
 #/gate/source/point/gps/ene/mono                 0. keV
 #/gate/source/point/setActivity                  2 MBq
 #/gate/source/point/setForcedUnstableFlag        true
-##/gate/source/point/setForcedHalfLife            14292 s
 #/gate/source/point/useDefaultHalfLife
 
 
