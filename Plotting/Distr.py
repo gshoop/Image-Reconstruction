@@ -6,9 +6,9 @@ mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
 name = "sc442Ps_dcs_"
 
-XDIVI = 40
-YDIVI = 40
-ZDIVI = 40
+XDIVI = 80
+YDIVI = 80
+ZDIVI = 80
 
 CONES = 10000
 
@@ -58,20 +58,26 @@ for It in plotlist:
         fz[k] += float(columns[0])
 
 
-    print(l)
-    print(m)
-    print("space")
     
 
     if m < 5 and l < 4:
+        print(l)
+        print(m)
+        print("space")
         images.append(axs[l,m].imshow(fxz, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,z_start,z_end]))
         axs[l,m].set_title( str(It) + " Iteration(s)" )
         m += 1
     else:
         m = 0
         l += 1
+        if l == 4:
+            break
+        print(l)
+        print(m)
+        print("space")
         images.append(axs[l,m].imshow(fxz, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,z_start,z_end]))
         axs[l,m].set_title( str(It) + " Iteration(s)" )
+        m += 1
 
     vmin = min(image.get_array().min() for image in images)
     vmax = max(image.get_array().max() for image in images)
@@ -88,5 +94,5 @@ cb_ax = fig.add_axes([0.02,0.05,0.01,0.9])
 cbar = fig.colorbar(images[1], cax=cb_ax,)
 
 plt.show()
-fig.savefig('../Images/Distribution_' + file_name + '.png')
+fig.savefig('../Images/Distr_' + file_name + '.png')
 plt.close(fig)

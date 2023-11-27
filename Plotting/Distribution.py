@@ -6,9 +6,9 @@ mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
 name = "sc442Ps_dcs_"
 
-XDIVI = 40
-YDIVI = 40
-ZDIVI = 40
+XDIVI = 80
+YDIVI = 80
+ZDIVI = 80
 
 CONES = 10000
 
@@ -71,6 +71,11 @@ for It in plotlist:
         fy[j] += float(columns[0])
         fz[k] += float(columns[0])
 
+    print("maxfx: ---")
+    print(max(fx))
+    print("index: ")
+    print(np.argmax(fx))
+    HM = (max(fx)-min(fx))/2 + min(fx)
 
     images.append(axz.imshow(fxz, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,z_start,z_end]))
     images.append(axy.imshow(fxy, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,y_start,y_end]))
@@ -80,6 +85,10 @@ for It in plotlist:
     vmin = min(image.get_array().min() for image in images)
     vmax = max(image.get_array().max() for image in images)
     norm = plt.Normalize(vmin=vmin, vmax=vmax)
+
+    print("vmax: ----")
+    print(image.get_array().min() for image in images)
+    print(vmax)
 
     for im in images:
         im.set_norm(norm)

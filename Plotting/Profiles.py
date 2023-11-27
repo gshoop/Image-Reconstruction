@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
+import pandas as pd
 from cycler import cycler
 mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
@@ -17,7 +18,7 @@ y_start, y_end = -20,20
 z_start, z_end = -20,20
 
 TotalIt = 20
-SAVEEVERY = 10
+SAVEEVERY = 1
 
 plotlist = [ 1 ]
 plotlist += range( SAVEEVERY , TotalIt + SAVEEVERY , SAVEEVERY )
@@ -50,6 +51,7 @@ ax.yaxis.set_label_position("right")
 for It in plotlist:
 
     file_name = svname + "_I" + str(It)
+    csv_name = file_name
 
     F=open ('../Output/' + file_name + '.csv', 'r')
 
@@ -72,7 +74,6 @@ for It in plotlist:
         fx[i] += float(columns[0])
         fy[j] += float(columns[0])
         fz[k] += float(columns[0])
-
 
     heatmap = ax.imshow(fxy, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,y_start,y_end])
 
