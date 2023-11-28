@@ -208,13 +208,13 @@ def spatialBinByVal(coord, spatialBinSize):
 
 if __name__ == '__main__':
     debug = True
-    input_file = 'Sc2Ps_RS2023Hits.dat'
+    input_file = 'ScPs_RS2023Hits.dat'
     slim_hit = 'slim_hit.dat'
     dcs_hit = 'dcs_hit.dat'
-    dcs_list = 'sc442Ps_dcs_bin1mm.dat'
+    dcs_list = 'sc44Ps_RS2023_dcs.dat'
 
     prompt_energy = 1.157
-    spatialBin = 1
+    spatialBin = 0
 
     # First we will create 
     #exclude_rayl_interactions(input_file,slim_hit)
