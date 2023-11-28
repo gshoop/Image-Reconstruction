@@ -4,11 +4,11 @@ import matplotlib as mpl
 from cycler import cycler
 mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
-name = "sc442Ps_dcs_"
+name = "sc442Ps_dcs_bin1mm_"
 
-XDIVI = 80
-YDIVI = 80
-ZDIVI = 80
+XDIVI = 40
+YDIVI = 40
+ZDIVI = 40
 
 CONES = 10000
 

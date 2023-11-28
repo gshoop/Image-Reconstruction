@@ -1,5 +1,5 @@
   File Naming
-1)    Name of the input file              = sc442Ps_dcs
+1)    Name of the input file              = sc442Ps_dcs_bin1mm
 2)    Added Modifier to the output name   = 
 
 
@@ -8,9 +8,9 @@
 -    Y-limits = -20.0 , 20.0
 -    Z-limits = -20.0 , 20.0
 
--    The number of voxels per dimension x,y,z = 80, 80, 80
--    The number of theads per iteration block = 512
--    The number of iteration blocks           = 1000
+-    The number of voxels per dimension x,y,z = 40, 40, 40
+-    The number of theads per iteration block = 256
+-    The number of iteration blocks           = 250
   THE NUMBER OF VOXELS MUST EQUAL THE NUMBER OF ITERATION THREADS
 
   Defining the Event Data

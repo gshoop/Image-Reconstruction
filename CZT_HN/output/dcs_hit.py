@@ -152,7 +152,7 @@ def validate_dcs(input_file, prompt_energy):
 
     return True
 
-def construct_coincidence_list(input_file, output_file, prompt_energy):
+def construct_coincidence_list(input_file, output_file, prompt_energy, spatialBinSize):
     '''
     Takes dcs GATE generated hit file and generates an output of the coincidences. The structure of the output
     file is as follows:
@@ -184,6 +184,15 @@ def construct_coincidence_list(input_file, output_file, prompt_energy):
                 process = columns[22]
                 if event_id == previous_event_id and previous_process == 'compt' and process == 'phot' and (int(columns[19]) == 0):
                     if abs((float(columns[11]) + float(previous_columns[11])) - prompt_energy) < tol:
+                        if spatialBinSize:
+                            # Create spatial bins
+                            previous_columns[13] = spatialBinByVal(previous_columns[13],spatialBinSize)
+                            previous_columns[14] = spatialBinByVal(previous_columns[14],spatialBinSize)
+                            previous_columns[15] = spatialBinByVal(previous_columns[15],spatialBinSize)
+                            columns[13] = spatialBinByVal(columns[13],spatialBinSize)
+                            columns[14] = spatialBinByVal(columns[14],spatialBinSize)
+                            columns[15] = spatialBinByVal(columns[15],spatialBinSize)
+
                         outfile.write(f"{previous_columns[11]} {previous_columns[13]} {previous_columns[14]} {previous_columns[15]} {columns[11]} {columns[13]} {columns[14]} {columns[15]}\n")
                         cone_count += 1
                 previous_event_id = event_id
@@ -193,20 +202,24 @@ def construct_coincidence_list(input_file, output_file, prompt_energy):
     print("Compton Cones: ")
     print(cone_count)
 
+def spatialBinByVal(coord, spatialBinSize):
+    return float(coord) - float(coord) % spatialBinSize + spatialBinSize/2
+
 
 if __name__ == '__main__':
     debug = True
     input_file = 'Sc2Ps_RS2023Hits.dat'
     slim_hit = 'slim_hit.dat'
     dcs_hit = 'dcs_hit.dat'
-    dcs_list = 'sc442Ps_dcs.dat'
+    dcs_list = 'sc442Ps_dcs_bin1mm.dat'
 
     prompt_energy = 1.157
+    spatialBin = 1
 
     # First we will create 
     #exclude_rayl_interactions(input_file,slim_hit)
     filter_dcs(input_file,dcs_hit,prompt_energy)
-    construct_coincidence_list(dcs_hit,dcs_list,prompt_energy)
+    construct_coincidence_list(dcs_hit,dcs_list,prompt_energy,spatialBin)
 
     if debug:
         if validate_dcs(dcs_hit,prompt_energy):

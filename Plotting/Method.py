@@ -7,7 +7,7 @@ from matplotlib import cm
 # 3 heatmaps and 3 profiles are then created along those coordinates, the actual location of the source is displayed in these as well
 # The various profiles are also exported as csv files and a textfile is created showing the distances from the estimated and actual locations
 
-name = "dcs_"
+name = "sc442Ps_dcs_bin1mm_"
 
 XDIVI = 40
 YDIVI = 40
@@ -15,13 +15,13 @@ ZDIVI = 40
 
 CONES = 10000
 
-x_start, x_end = -100, 100
-y_start, y_end = -100, 100
-z_start, z_end = -75, 75
+x_start, x_end = -20, 20
+y_start, y_end = -20, 20
+z_start, z_end = -20, 20
 
-It = 80
+It = 20
 
-actual_locations = np.array( [ 0 , 0 , 0 ] )
+actual_locations = np.array( [ 5.5 , 0 , 0] )
 
 ########################################################################################
 divis = np.array ( ( XDIVI , YDIVI , ZDIVI ) , dtype = int )

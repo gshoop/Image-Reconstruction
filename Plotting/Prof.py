@@ -5,13 +5,13 @@ import pandas as pd
 from cycler import cycler
 mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
-name = "sc442Ps_dcs_"
+name = "sc442Ps_dcs_bin1mm_"
 
-XDIVI = 80
-YDIVI = 80
-ZDIVI = 80
+XDIVI = 40
+YDIVI = 40
+ZDIVI = 40
 
-CONES = 10000
+CONES = 1000
 
 x_start, x_end = -20,20
 y_start, y_end = -20,20
@@ -22,6 +22,8 @@ SAVEEVERY = 1
 
 plotlist = [ 1 ]
 plotlist += range( SAVEEVERY , TotalIt + SAVEEVERY , SAVEEVERY )
+plotlist = plotlist[1:TotalIt+1]
+print(plotlist)
 
 svname = name + "_C" + str(CONES) + "_x" + str(XDIVI) + "y" + str(YDIVI) + "z" + str(ZDIVI)
 
@@ -37,6 +39,7 @@ for It in plotlist:
     file_name = svname + "_I" + str(It)
 
     F=open ('../Output/' + file_name + '.csv', 'r')
+    print("Iteration: " + file_name)
 
     fx = np.zeros(XDIVI)
     fy = np.zeros(YDIVI)
