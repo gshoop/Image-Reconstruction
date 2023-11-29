@@ -4,11 +4,11 @@ import matplotlib as mpl
 from cycler import cycler
 mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
-name = "sc442Ps_dcs_bin1mm_"
+name = "sc44Ps_RS2023_dcs_"
 
-XDIVI = 40
-YDIVI = 40
-ZDIVI = 40
+XDIVI = 80
+YDIVI = 80
+ZDIVI = 80
 
 CONES = 1000
 
@@ -21,7 +21,7 @@ SAVEEVERY = 1
 
 plotlist = [ 1 ]
 plotlist += range( SAVEEVERY , TotalIt + SAVEEVERY , SAVEEVERY )
-
+plotlist = plotlist[1:TotalIt+1]
 svname = name + "_C" + str(CONES) + "_x" + str(XDIVI) + "y" + str(YDIVI) + "z" + str(ZDIVI)
 
 fig , axs = plt.subplots(4,5)

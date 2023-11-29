@@ -6,9 +6,9 @@ mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
 name = "sc44Ps_RS2023_dcs_"
 
-XDIVI = 40
-YDIVI = 40
-ZDIVI = 40
+XDIVI = 80
+YDIVI = 80
+ZDIVI = 80
 
 CONES = 1000
 
