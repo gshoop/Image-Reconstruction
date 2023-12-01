@@ -44,7 +44,7 @@
 # Actors
 #----------------------------
 /gate/actor/addActor               SimulationStatisticActor stat
-/gate/actor/stat/save              ./output/stat.txt
+/gate/actor/stat/save              /mnt/d/HitsGATE/{outputfolder}/stat.txt
 /gate/actor/stat/saveEveryNSeconds 60
 
 #----------------------------
@@ -78,20 +78,20 @@
 
 # ASCII output
 /gate/output/ascii/enable
-/gate/output/ascii/setFileName                ./output/ScPs_Run3
+/gate/output/ascii/setFileName                /mnt/d/HitsGATE/{outputfolder}/Sc442Ps_Run1
 /gate/output/ascii/setOutFileHitsFlag         1
 /gate/output/ascii/setOutFileSinglesFlag      0
 /gate/output/ascii/setOutFileCoincidencesFlag 0
 # Mask Columns                                          1                   2                   3                   4
 # Mask Columns                        1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6
-/gate/output/ascii/setCoincidenceMask 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0
+#/gate/output/ascii/setCoincidenceMask 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0
 
 # ROOT Output format
-/gate/output/root/enable
-/gate/output/root/setFileName             ./output/ScPs_Run3
-/gate/output/root/setRootHitFlag          1
-/gate/output/root/setRootSinglesFlag      0
-/gate/output/root/setRootCoincidencesFlag 0
+#/gate/output/root/enable
+#/gate/output/root/setFileName             ./output/ScPs_Run3
+#/gate/output/root/setRootHitFlag          1
+#/gate/output/root/setRootSinglesFlag      0
+#/gate/output/root/setRootCoincidencesFlag 0
 
 #----------------------------
 # Randomize 
@@ -104,9 +104,9 @@
 #----------------------------
 # Acquisition
 #----------------------------
-/gate/application/setTimeSlice 1 s
-/gate/application/setTimeStart 0 s
-/gate/application/setTimeStop  1 s
+/gate/application/setTimeSlice {timeslice} s
+/gate/application/setTimeStart {timestart} s
+/gate/application/setTimeStop  {timestop} s
 /gate/application/startDAQ
 
 

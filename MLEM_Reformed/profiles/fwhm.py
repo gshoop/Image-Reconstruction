@@ -35,9 +35,11 @@ def fit_double_gaussian(x_data, y_data):
     return popt
 
 def fit_gaussian(x_data, y_data):
-    initial_guess = [max(y_data), -0.5, 4]
-    popt, _ = curve_fit(gaussian, x_data, y_data, p0=initial_guess)
-    return popt
+    mean = sum(x_data*y_data)/sum(y_data)
+    sigma = sum(y_data*(x_data-mean)**2)/sum(y_data)
+    initial_guess = [max(y_data), mean, sigma]
+    popt, pcov = curve_fit(gaussian, x_data, y_data, p0=initial_guess)
+    return popt, pcov
 
 # Plot the data and fitted curve
 def plot_fit(x_data, y_data, fit_params,single_fit):
@@ -137,7 +139,7 @@ if single_fit == 0:
     # Plot the data and fitted curve
     plot_fit(x_data, y_data, double_fit_params)
 else:
-    fit_params = fit_gaussian(x_data, y_data/max(y_data))
+    fit_params, pcov_g = fit_gaussian(x_data, y_data/max(y_data))
 
     print('Fitted Parameters for Gaussian 1:')
     print('Amplitude:', fit_params[0])
@@ -175,17 +177,17 @@ fig, ax = plt.subplots()
 fig.set_figheight(6)
 fig.set_figwidth(10)
 
-ax.set_title('FWHM Sc-44 x-direction',fontsize=14)
+ax.set_title('FWHM z-direction',fontsize=14)
 ax.set_xlabel('Iteration #')
 ax.set_ylabel('FWHM (mm)')
-ax.plot(it,fwhm_sc44,'o--c',linewidth=1,label="40 voxels")
-ax.plot(it,fwhm_sc44_80vox,'d-.m',linewidth=1,label="80 voxels")
-#ax.plot(it,fwhm_sc44_zdir_10k,'s:g',linewidth=1,label="10000 Cones")
+ax.plot(it,fwhm_sc44_zdir,'o--',linewidth=1,label="Sc-44")
+ax.plot(it,fwhm_as72_zdir,'d-.',linewidth=1,label="As-72")
+ax.plot(it,fwhm_ga68_zdir,'s:',linewidth=1,label="Ga-68")
 ax.xaxis.set_ticks(np.arange(0,21,1))
 ax.grid(True)
 ax.legend()
 
 plt.show()
-fig.savefig('FWHM_sc44_voxel_comp.png',dpi=300)
-fig.savefig('FWHM_sc44_voxel_comp.eps',dpi=300)
+fig.savefig('FWHM_comp_zdir.png',dpi=300)
+fig.savefig('FWHM_comp_zdir.eps',dpi=300)
 plt.close()

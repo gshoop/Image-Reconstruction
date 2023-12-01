@@ -6,9 +6,9 @@ mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
 name = "sc44Ps_RS2023_dcs_"
 
-XDIVI = 80
-YDIVI = 80
-ZDIVI = 80
+XDIVI = 40
+YDIVI = 40
+ZDIVI = 40
 
 CONES = 1000
 
@@ -25,7 +25,7 @@ plotlist += range( SAVEEVERY , TotalIt + SAVEEVERY , SAVEEVERY )
 svname = name + "_C" + str(CONES) + "_x" + str(XDIVI) + "y" + str(YDIVI) + "z" + str(ZDIVI)
 
 fig = plt.figure(figsize=(12,4))
-fig.suptitle('44-Sc Point Source %d Compton Cones' %(CONES) )
+fig.suptitle('Sc-44 Point Source %d Compton Cones' %(CONES) )
 images = []
 
 axz = fig.add_subplot(1,3,1)

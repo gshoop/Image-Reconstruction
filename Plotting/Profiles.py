@@ -5,13 +5,13 @@ import pandas as pd
 from cycler import cycler
 mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
-name = "sc442Ps_dcs_"
+name = "as722Ps_dcs_"
 
 XDIVI = 40
 YDIVI = 40
 ZDIVI = 40
 
-CONES = 10000
+CONES = 1000
 
 x_start, x_end = -20,20
 y_start, y_end = -20,20
