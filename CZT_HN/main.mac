@@ -1,0 +1,113 @@
+#----------------------------
+# Visualisation
+#----------------------------
+/control/execute ./macro/Visualisation.mac
+/vis/disable
+
+#----------------------------
+# Verbosity 
+#----------------------------
+/control/execute ./macro/Verbosity.mac
+
+#----------------------------
+# Material
+#----------------------------
+/gate/geometry/setMaterialDatabase ./GateMaterials.db
+
+#----------------------------
+# World
+#----------------------------
+/gate/world/geometry/setXLength     1000. mm
+/gate/world/geometry/setYLength     1000. mm
+/gate/world/geometry/setZLength     1000. mm
+/gate/world/setMaterial             Air
+/gate/world/vis/setVisible          true
+/gate/world/vis/setColor            white
+/gate/world/vis/forceWireframe
+
+#----------------------------
+# Scanner Geometry
+#----------------------------
+/control/execute ./macro/Geometry.mac
+
+#----------------------------
+# Phantom Geometry
+#----------------------------
+#/control/execute ./macro/Phantom.mac
+
+#----------------------------
+# Physics
+#----------------------------
+/control/execute ./macro/Physics.mac
+
+#----------------------------
+# Actors
+#----------------------------
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              {outputfolder}/stat.txt
+/gate/actor/stat/saveEveryNSeconds 60
+
+#----------------------------
+# Inilization
+#----------------------------
+/gate/run/initialize
+/process/inactivate msc
+#/process/inactivate eIoni
+#/process/inactivate annihil
+
+/run/setCut 1 mm
+/gate/physics/displayCuts
+/gate/physics/processList Enabled
+/gate/physics/displayCuts
+
+#----------------------------
+# Digitizer
+#----------------------------
+#/control/execute ./macro/Digitizer.mac
+
+#----------------------------
+# Source
+#----------------------------
+#/control/execute ./macro/SingleGammaSource.mac
+/control/execute ./macro/44ScPointSource.mac
+#/control/execute ./macro/Sc44Derenzo.mac
+
+#----------------------------
+# Data output
+#----------------------------
+
+# ASCII output
+/gate/output/ascii/enable
+/gate/output/ascii/setFileName                {outputfolder}/Sc442Ps_Run1
+/gate/output/ascii/setOutFileHitsFlag         1
+/gate/output/ascii/setOutFileSinglesFlag      0
+/gate/output/ascii/setOutFileCoincidencesFlag 0
+# Mask Columns                                          1                   2                   3                   4
+# Mask Columns                        1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6
+#/gate/output/ascii/setCoincidenceMask 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0
+
+# ROOT Output format
+#/gate/output/root/enable
+#/gate/output/root/setFileName             ./output/ScPs_Run3
+#/gate/output/root/setRootHitFlag          1
+#/gate/output/root/setRootSinglesFlag      0
+#/gate/output/root/setRootCoincidencesFlag 0
+
+#----------------------------
+# Randomize 
+#----------------------------
+# MersenneTwister
+/gate/random/setEngineName MersenneTwister
+#/gate/random/setEngineSeed 2023
+/gate/random/setEngineSeed auto
+
+#----------------------------
+# Acquisition
+#----------------------------
+/gate/application/setTimeSlice {timeslice} s
+/gate/application/setTimeStart {timestart} s
+/gate/application/setTimeStop  {timestop} s
+/gate/application/startDAQ
+
+
+
