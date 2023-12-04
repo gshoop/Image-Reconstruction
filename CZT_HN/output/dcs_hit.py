@@ -208,12 +208,12 @@ def spatialBinByVal(coord, spatialBinSize):
 
 if __name__ == '__main__':
     debug = True
-    input_file = 'ScPs_RS2023Hits.dat'
+    input_file = 'GaPs_RS2023Hits.dat'
     slim_hit = 'slim_hit.dat'
     dcs_hit = 'dcs_hit.dat'
-    dcs_list = 'sc44Ps_RS2023_dcs.dat'
+    dcs_list = 'test.dat'
 
-    prompt_energy = 1.157
+    prompt_energy = 1.077
     spatialBin = 0
 
     # First we will create 

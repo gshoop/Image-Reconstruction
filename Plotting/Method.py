@@ -7,13 +7,13 @@ from matplotlib import cm
 # 3 heatmaps and 3 profiles are then created along those coordinates, the actual location of the source is displayed in these as well
 # The various profiles are also exported as csv files and a textfile is created showing the distances from the estimated and actual locations
 
-name = "sc442Ps_dcs_bin1mm_"
+name = "sc44Ps_RS2023_dcs_bin1mm"
 
 XDIVI = 40
 YDIVI = 40
 ZDIVI = 40
 
-CONES = 10000
+CONES = 1000
 
 x_start, x_end = -20, 20
 y_start, y_end = -20, 20

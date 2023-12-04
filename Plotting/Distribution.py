@@ -4,7 +4,7 @@ import matplotlib as mpl
 from cycler import cycler
 mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
-name = "sc44Ps_RS2023_dcs_"
+name = "sc44Ps_RS2023_dcs_bin2mm"
 
 XDIVI = 40
 YDIVI = 40
@@ -18,6 +18,8 @@ z_start, z_end = -20,20
 
 TotalIt = 20
 SAVEEVERY = 1
+
+bins = 1
 
 plotlist = [ 1 ]
 plotlist += range( SAVEEVERY , TotalIt + SAVEEVERY , SAVEEVERY )
@@ -71,11 +73,29 @@ for It in plotlist:
         fy[j] += float(columns[0])
         fz[k] += float(columns[0])
 
+    if (bins == 1):
+        fxz[0][0] = 0.0
+        fxz[0][XDIVI-1] = 0.0
+        fxz[ZDIVI-1][0] = 0.0
+        fxz[ZDIVI-1][XDIVI-1] = 0.0
+
+        fxy[0][0] = 0.0
+        fxy[0][XDIVI-1] = 0.0
+        fxy[ZDIVI-1][0] = 0.0
+        fxy[ZDIVI-1][XDIVI-1] = 0.0
+
+        fyz[0][0] = 0.0
+        fyz[0][XDIVI-1] = 0.0
+        fyz[ZDIVI-1][0] = 0.0
+        fyz[ZDIVI-1][XDIVI-1] = 0.0
+
     print("maxfx: ---")
     print(max(fx))
     print("index: ")
     print(np.argmax(fx))
     HM = (max(fx)-min(fx))/2 + min(fx)
+
+
 
     images.append(axz.imshow(fxz, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,z_start,z_end]))
     images.append(axy.imshow(fxy, cmap = 'jet', origin = 'lower', extent = [x_start,x_end,y_start,y_end]))

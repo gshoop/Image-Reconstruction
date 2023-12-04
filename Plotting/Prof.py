@@ -22,7 +22,7 @@ def gaussian(x, amp, mean, stddev):
 
 mpl.rcParams['axes.prop_cycle'] = cycler(color='brk')
 
-name = "as72Ps_RS2023_dcs_"
+name = "sc44Ps_RS2023_dcs_bin2mm"
 
 XDIVI = 40
 YDIVI = 40
@@ -52,8 +52,10 @@ xspace = np.linspace( x_start , x_end , XDIVI )
 yspace = np.linspace( y_start , y_end , YDIVI )
 zspace = np.linspace( z_start , z_end , ZDIVI )
 
+divis = np.array ( ( XDIVI , YDIVI , ZDIVI ) , dtype = int )
+
 fig , axs = plt.subplots(4,5)
-fig.suptitle('As-72 Point Source %d Compton Cones\n Normalized Activity Profile' %(CONES) )
+fig.suptitle('Sc-44 Point Source %d Compton Cones\n Normalized Activity Profile' %(CONES) )
 images = []
 l = 0
 m = 0
@@ -72,17 +74,30 @@ for It in plotlist:
     fxy = [[ 0 for i in range(XDIVI) ]  for k in range(YDIVI)]
     fyz = [[ 0 for i in range(YDIVI) ]  for k in range(ZDIVI)]
 
+    f_max = 0.0
     for line in F:
         line=line.strip()
         columns=line.split(",")
         i = int(columns[4])
         j = int(columns[5])
         k = int(columns[6])
+        f = float(columns[0])
+
+        locs = [ int(columns[4]) , int(columns[5]) , int(columns[6]) ]
+
+        distance_to_corner = min ( min( ( ( divis - 1 ) - locs ) ) ,  min(locs) )
+
+        if f > f_max and distance_to_corner > np.mean(divis)/50:
+            f_max = f
+            max_locs = np.array([ int(columns[4]) , int(columns[5]) , int(columns[6]) ])
+            max_pos = np.array([ float(columns[1]) , float(columns[2]) , float(columns[3]) ])
+            fx[i] += float(columns[0])
+
+
 
         fxz[k][i] += float(columns[0])
         fxy[j][i] += float(columns[0])
         fyz[k][j] += float(columns[0])
-        fx[i] += float(columns[0])
         fy[j] += float(columns[0])
         fz[k] += float(columns[0])
 
@@ -185,7 +200,7 @@ xg = np.linspace(x_start,x_end,1000)
 yg = gaussian(xg, *popt_g)
 
 fig1, ax1 = plt.subplots()
-fig1.suptitle('As-72 Point Source %d Compton Cones\n Normalized Activity Profile' %(CONES))
+fig1.suptitle('Sc-44 Point Source %d Compton Cones\n Normalized Activity Profile' %(CONES))
 ax1.set_xlabel('x (mm)')
 ax1.set_ylabel('Probability density')
 ax1.fill_between(xspace,fx/max(fx), step="pre", alpha=0.4)
@@ -212,7 +227,7 @@ xg = np.linspace(y_start,y_end,1000)
 yg = gaussian(xg, *popt_g)
 
 fig1, ax1 = plt.subplots()
-fig1.suptitle('As-72 Point Source %d Compton Cones\n Normalized Activity Profile' %(CONES))
+fig1.suptitle('Sc-44 Point Source %d Compton Cones\n Normalized Activity Profile' %(CONES))
 ax1.set_xlabel('y (mm)')
 ax1.set_ylabel('Probability density')
 ax1.fill_between(yspace,fy/max(fy), step="pre", alpha=0.4)
@@ -239,7 +254,7 @@ xg = np.linspace(z_start,z_end,1000)
 yg = gaussian(xg, *popt_g)
 
 fig1, ax1 = plt.subplots()
-fig1.suptitle('As-72 Point Source %d Compton Cones\n Normalized Activity Profile' %(CONES))
+fig1.suptitle('Sc-44 Point Source %d Compton Cones\n Normalized Activity Profile' %(CONES))
 ax1.set_xlabel('z (mm)')
 ax1.set_ylabel('Probability density')
 ax1.fill_between(zspace,fz/max(fz), step="pre", alpha=0.4)
